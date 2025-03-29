@@ -73,11 +73,12 @@ For over a decade, I designed magic for giants like Disney, Hasbro, and Universa
         </div>
     </nav>
 
-    <button id="backToTop" class="btn btn-primary rounded-circle position-fixed bottom-0 end-0 m-4 d-none back-to-top">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-            <path d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
         </svg>
-    </button>
+    </a>
 
     <header class="bg-primary position-relative overflow-hidden">
         <div class="container py-7 py-xl-8 position-relative">
@@ -1061,17 +1062,23 @@ For over a decade, I designed magic for giants like Disney, Hasbro, and Universa
                     <div class="card border-0 bg-primary bg-opacity-10 p-4">
                         <h4 class="h5 mb-3">📚 Bundle-Specific Journey Notes:</h4>
                         <ul class="list-unstyled mb-0 bundle-notes">
-                            <li class="mb-3">
-                                <strong>Basic Bundle:</strong> 
-                                <span>Focus on Phases 1-2. Self-paced implementation with community support.</span>
+                            <li class="d-flex align-items-start mb-3">
+                                <div>
+                                    <strong class="d-block mb-1">Basic Bundle:</strong> 
+                                    <span class="text-muted">Focus on Phases 1-2. Self-paced implementation with community support.</span>
+                                </div>
                             </li>
-                            <li class="mb-3">
-                                <strong>Premium Bundle:</strong> 
-                                <span>Access to all phases with detailed case studies and advanced strategies.</span>
+                            <li class="d-flex align-items-start mb-3">
+                                <div>
+                                    <strong class="d-block mb-1">Premium Bundle:</strong> 
+                                    <span class="text-muted">Access to all phases with detailed case studies and advanced strategies.</span>
+                                </div>
                             </li>
-                            <li>
-                                <strong>VIP Bundle:</strong> 
-                                <span>Accelerated progress through all phases with direct mentorship support.</span>
+                            <li class="d-flex align-items-start">
+                                <div>
+                                    <strong class="d-block mb-1">VIP Bundle:</strong> 
+                                    <span class="text-muted">Accelerated progress through all phases with direct mentorship support.</span>
+                                </div>
                             </li>
                         </ul>
                     </div>
@@ -1578,6 +1585,28 @@ For over a decade, I designed magic for giants like Disney, Hasbro, and Universa
             </div>
         </div>
     </div>
+
+    <script>
+        // Back to top button
+        const backToTop = document.querySelector('.back-to-top');
+        if (backToTop) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('active');
+                } else {
+                    backToTop.classList.remove('active');
+                }
+            });
+
+            backToTop.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+    </script>
 </body>
 
 </html>

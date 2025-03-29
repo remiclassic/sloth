@@ -481,13 +481,13 @@ html[data-bs-theme] .avatar-circle .text-primary {
 /* Mobile CTA styles */
 .mobile-cta {
     background-color: #ffffff !important;
-    z-index: 99999 !important; /* Highest z-index */
+    z-index: 99999 !important;
     position: fixed !important;
     bottom: 0 !important;
     left: 0 !important;
     width: 100% !important;
-    transform: translateZ(0) !important; /* Create new stacking context */
-    will-change: transform !important; /* Optimize for fixed positioning */
+    transform: translateZ(0) !important;
+    will-change: transform !important;
 }
 
 /* Ensure modals don't overlap mobile CTA */
@@ -514,9 +514,13 @@ html[data-bs-theme] .avatar-circle .text-primary {
     z-index: 99994 !important;
 }
 
-/* Ensure social proof stays below CTA */
+/* Social Proof Notification Position */
 .social-proof-notification {
-    z-index: 99993 !important;
+    position: fixed;
+    width: calc(100% - 2.5rem);
+    left: 1.25rem;
+    bottom: 30px;
+    z-index: 99993;
 }
 
 .mobile-cta .badge.bg-warning {
@@ -680,10 +684,7 @@ html[data-bs-theme] .avatar-circle .text-primary {
 
     /* Fix social proof notification position */
     .social-proof-notification {
-        width: calc(100% - 2.5rem) !important;
-        left: 1.25rem !important;
-        bottom: 6rem !important;
-        z-index: 99993 !important;
+        bottom: 160px; /* Increased to prevent overlap with mobile CTA */
     }
 
     /* Fix section padding and margins */
@@ -849,10 +850,7 @@ section {
 
     /* Fix social proof notification position */
     .social-proof-notification {
-        width: calc(100% - 2.5rem) !important;
-        left: 1.25rem !important;
-        bottom: 6rem !important;
-        z-index: 99993 !important;
+        bottom: 160px; /* Increased to prevent overlap with mobile CTA */
     }
 
     /* Fix section padding and margins */
@@ -1404,5 +1402,979 @@ footer hr {
 
     .card-body {
         padding: 1.25rem !important;
+    }
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--sloth-purple);
+    color: #ffffff;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 99994;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.back-to-top:hover {
+    background: var(--sloth-dark-purple);
+    color: #ffffff;
+    transform: translateY(-3px);
+}
+
+.back-to-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Adjust position when mobile CTA is present */
+@media (max-width: 767.98px) {
+    .back-to-top {
+        bottom: 120px; /* Increased from 90px to prevent overlap */
+    }
+}
+
+/* Z-index hierarchy */
+.mobile-cta {
+    z-index: 99999 !important;
+}
+
+.dropdown-menu {
+    z-index: 99996 !important;
+}
+
+.tooltip {
+    z-index: 99995 !important;
+}
+
+.popover {
+    z-index: 99994 !important;
+}
+
+.back-to-top {
+    z-index: 99994 !important;
+}
+
+/* Mobile CTA styles */
+.mobile-cta .badge.bg-warning {
+    background-color: var(--sloth-yellow) !important;
+    color: #000000 !important;
+    font-weight: normal !important;
+}
+
+.mobile-cta .text-dark {
+    color: #000000 !important;
+    font-weight: 600 !important;
+}
+
+.mobile-cta .text-muted {
+    color: #6c757d !important;
+}
+
+.mobile-cta .btn-primary {
+    background-color: var(--sloth-purple) !important;
+    border-color: var(--sloth-purple) !important;
+    color: #ffffff !important;
+    padding-right: 1.5rem !important;
+    padding-left: 1.5rem !important;
+    border-radius: 50rem !important;
+}
+
+.mobile-cta .rounded-pill {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Override any theme changes */
+[data-bs-theme="dark"] .mobile-cta,
+[data-bs-theme="light"] .mobile-cta {
+    background-color: #ffffff !important;
+}
+
+[data-bs-theme="dark"] .mobile-cta .badge.bg-warning,
+[data-bs-theme="light"] .mobile-cta .badge.bg-warning {
+    background-color: var(--sloth-yellow) !important;
+    color: #000000 !important;
+}
+
+[data-bs-theme="dark"] .mobile-cta .text-dark,
+[data-bs-theme="light"] .mobile-cta .text-dark {
+    color: #000000 !important;
+}
+
+[data-bs-theme="dark"] .mobile-cta .text-muted,
+[data-bs-theme="light"] .mobile-cta .text-muted {
+    color: #6c757d !important;
+}
+
+[data-bs-theme="dark"] .mobile-cta .btn-primary,
+[data-bs-theme="light"] .mobile-cta .btn-primary {
+    background-color: var(--sloth-purple) !important;
+    border-color: var(--sloth-purple) !important;
+    color: #ffffff !important;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 767.98px) {
+    /* Adjust font sizes for mobile */
+    h1.display-4 {
+        font-size: calc(1.475rem + 2.7vw) !important;
+    }
+    
+    .lead {
+        font-size: 1.1rem !important;
+    }
+    
+    /* Improve spacing in hero section */
+    header .container {
+        padding-top: 2rem !important;
+        padding-bottom: 5rem !important; /* Extra padding for mobile CTA */
+    }
+    
+    /* Adjust testimonial slider for mobile */
+    .testimonial-slide {
+        padding: 1rem !important;
+    }
+    
+    .testimonial-slide p {
+        font-size: 0.9rem !important;
+    }
+    
+    /* Improve mobile navigation */
+    .navbar {
+        padding: 0.5rem 0 !important;
+    }
+    
+    .navbar-collapse {
+        background: #ffffff !important;
+        padding: 1rem !important;
+        border-radius: 0.5rem !important;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+    }
+    
+    /* Adjust button sizes for touch */
+    .btn {
+        padding: 0.75rem 1.5rem !important;
+        font-size: 1rem !important;
+    }
+    
+    .btn-sm {
+        padding: 0.5rem 1rem !important;
+        font-size: 0.875rem !important;
+    }
+    
+    /* Improve mobile CTA */
+    .mobile-cta {
+        padding: 0.75rem 1.25rem !important;
+        background: #ffffff !important;
+        border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+        z-index: 99999 !important;
+    }
+    
+    .mobile-cta .container {
+        padding: 0 !important;
+    }
+    
+    .mobile-cta .rounded-pill {
+        padding: 0.75rem 1rem !important;
+    }
+    
+    /* Update CTA layout to horizontal */
+    .mobile-cta .d-flex.align-items-center {
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 0.5rem !important;
+        width: 100% !important;
+    }
+
+    /* Style the left side of CTA */
+    .mobile-cta .badge-container {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.75rem !important;
+    }
+
+    .mobile-cta .badge.bg-warning {
+        margin: 0 !important;
+        font-size: 0.8rem !important;
+        padding: 0.35rem 0.75rem !important;
+    }
+
+    /* Show "Start Your Journey" on mobile */
+    .mobile-cta .text-dark.fw-bold {
+        display: inline-block !important;
+        font-size: 0.9rem !important;
+        margin: 0 !important;
+    }
+
+    /* Adjust button size */
+    .mobile-cta .btn-primary {
+        padding: 0.5rem 1.25rem !important;
+        font-size: 0.9rem !important;
+        min-height: 38px !important;
+        white-space: nowrap !important;
+    }
+
+    /* Fix social proof notification position */
+    .social-proof-notification {
+        bottom: 160px; /* Increased to prevent overlap with mobile CTA */
+    }
+
+    /* Fix section padding and margins */
+    section {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+    }
+
+    /* Ensure proper spacing between sections */
+    section + section {
+        margin-top: 0 !important;
+    }
+
+    /* Fix any nested scrollable areas */
+    .overflow-auto,
+    .overflow-scroll,
+    [style*="overflow: auto"],
+    [style*="overflow: scroll"] {
+        overflow: visible !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    /* Fix potential header overlap issues */
+    .navbar + section,
+    .navbar + header {
+        padding-top: 4.5rem !important;
+    }
+}
+
+/* Tablet-specific adjustments */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .container {
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+    }
+    
+    h1.display-4 {
+        font-size: calc(1.475rem + 3.3vw) !important;
+    }
+}
+
+/* Landscape mode adjustments */
+@media (max-height: 576px) and (orientation: landscape) {
+    header .container {
+        padding-top: 1rem !important;
+        padding-bottom: 4rem !important;
+    }
+    
+    .mobile-cta {
+        position: sticky !important;
+    }
+}
+
+/* Fix touch targets */
+@media (hover: none) and (pointer: coarse) {
+    .btn,
+    .nav-link,
+    .navbar-toggler {
+        min-height: 44px !important; /* Apple's recommended minimum */
+        min-width: 44px !important;
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 0.75rem 1rem !important;
+    }
+}
+
+/* Base mobile fixes */
+html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    position: relative !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: 100vw !important;
+    -webkit-overflow-scrolling: touch !important;
+}
+
+/* Container and section fixes */
+.container, 
+.container-fluid {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+    overflow: visible !important;
+}
+
+/* Row and column fixes */
+.row {
+    margin-left: -1.25rem !important;
+    margin-right: -1.25rem !important;
+    overflow: visible !important;
+}
+
+[class*="col-"] {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+    overflow: visible !important;
+}
+
+/* Section padding fixes */
+section {
+    overflow: visible !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 767.98px) {
+    /* Adjust mobile CTA */
+    .mobile-cta {
+        padding: 0.75rem 1.25rem !important;
+        background: #ffffff !important;
+        border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+        z-index: 99999 !important;
+    }
+
+    .mobile-cta .container {
+        padding: 0 !important;
+    }
+
+    .mobile-cta .rounded-pill {
+        padding: 0.75rem 1rem !important;
+    }
+
+    /* Update CTA layout to horizontal */
+    .mobile-cta .d-flex.align-items-center {
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 0.5rem !important;
+        width: 100% !important;
+    }
+
+    /* Style the left side of CTA */
+    .mobile-cta .badge-container {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.75rem !important;
+    }
+
+    .mobile-cta .badge.bg-warning {
+        margin: 0 !important;
+        font-size: 0.8rem !important;
+        padding: 0.35rem 0.75rem !important;
+    }
+
+    /* Show "Start Your Journey" on mobile */
+    .mobile-cta .text-dark.fw-bold {
+        display: inline-block !important;
+        font-size: 0.9rem !important;
+        margin: 0 !important;
+    }
+
+    /* Adjust button size */
+    .mobile-cta .btn-primary {
+        padding: 0.5rem 1.25rem !important;
+        font-size: 0.9rem !important;
+        min-height: 38px !important;
+        white-space: nowrap !important;
+    }
+
+    /* Fix social proof notification position */
+    .social-proof-notification {
+        bottom: 160px; /* Increased to prevent overlap with mobile CTA */
+    }
+
+    /* Fix section padding and margins */
+    section {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+    }
+
+    /* Ensure proper spacing between sections */
+    section + section {
+        margin-top: 0 !important;
+    }
+
+    /* Fix any nested scrollable areas */
+    .overflow-auto,
+    .overflow-scroll,
+    [style*="overflow: auto"],
+    [style*="overflow: scroll"] {
+        overflow: visible !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    /* Fix potential header overlap issues */
+    .navbar + section,
+    .navbar + header {
+        padding-top: 4.5rem !important;
+    }
+}
+
+/* Fix container max-widths */
+@media (min-width: 576px) {
+    .container {
+        max-width: min(540px, 100% - 1.5rem) !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: min(720px, 100% - 2rem) !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: min(960px, 100% - 2rem) !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: min(1140px, 100% - 2rem) !important;
+    }
+}
+
+/* Fix notched device issues */
+@supports(padding: max(0px)) {
+    body {
+        padding-left: min(0vw, env(safe-area-inset-left)) !important;
+        padding-right: min(0vw, env(safe-area-inset-right)) !important;
+        padding-bottom: min(0vh, env(safe-area-inset-bottom)) !important;
+    }
+}
+
+/* Footer links alignment fix */
+.footer-links {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.footer-links a {
+    display: block !important;
+    text-align: center !important;
+    padding: 0.75rem !important;
+    margin: 0 !important;
+    color: #6c757d !important;
+    text-decoration: none !important;
+    flex: 0 1 auto !important;
+}
+
+@media (max-width: 767.98px) {
+    .footer-links {
+        flex-direction: column !important;
+        gap: 0 !important;
+    }
+
+    .footer-links a {
+        width: 100% !important;
+        padding: 0.75rem 0 !important;
+        margin: 0 !important;
+    }
+}
+
+/* Footer mobile adjustments */
+@media (max-width: 767.98px) {
+    .footer-payment-icons {
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+    }
+}
+
+/* Footer tablet adjustments */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .footer-links a {
+        min-width: 140px;
+    }
+}
+
+/* Fix testimonial circles */
+.testimonial-slide .avatar-circle {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+    max-width: 48px !important;
+    max-height: 48px !important;
+    aspect-ratio: 1 !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+    flex-shrink: 0 !important;
+    background: #ffffff !important;
+}
+
+.testimonial-slide .avatar-circle span {
+    font-size: 1.25rem !important;
+    line-height: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Testimonial slide adjustments */
+.testimonial-slide {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.testimonial-slide .d-flex {
+    align-items: center !important;
+    gap: 1rem !important;
+}
+
+/* Mobile adjustments for testimonials */
+@media (max-width: 767.98px) {
+    .testimonial-slide .avatar-circle {
+        width: 40px !important;
+        height: 40px !important;
+        min-width: 40px !important;
+        min-height: 40px !important;
+        max-width: 40px !important;
+        max-height: 40px !important;
+    }
+
+    .testimonial-slide .avatar-circle span {
+        font-size: 1rem !important;
+    }
+
+    .testimonial-slide {
+        padding: 1rem !important;
+    }
+
+    .testimonial-slide .d-flex {
+        gap: 0.75rem !important;
+    }
+}
+
+/* Mobile image and content fixes */
+img.img-fluid {
+    max-width: 100% !important;
+    height: auto !important;
+    width: auto !important;
+    object-fit: contain !important;
+}
+
+.col-md-6 img.img-fluid {
+    display: block !important;
+    margin: 0 auto !important;
+    max-width: calc(100% - 2rem) !important;
+}
+
+/* Mobile section padding and margins */
+@media (max-width: 767.98px) {
+    section {
+        padding: 2rem 0 !important;
+    }
+
+    .container {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    .row {
+        margin-left: -0.5rem !important;
+        margin-right: -0.5rem !important;
+    }
+
+    [class*="col-"] {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+
+    /* Fix image containers */
+    .col-md-6.text-center {
+        padding: 0 1rem !important;
+    }
+
+    /* Specific fix for corpsloth image */
+    img[src*="corpsloth.png"] {
+        max-width: 100% !important;
+        width: 100% !important;
+        height: auto !important;
+        margin: 0 !important;
+        display: block !important;
+        object-fit: contain !important;
+    }
+
+    /* Fix image shadow and border radius */
+    .rounded-4 {
+        border-radius: 1rem !important;
+    }
+
+    .shadow-sm {
+        box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important;
+    }
+
+    /* Fix content spacing */
+    .mb-5 {
+        margin-bottom: 2rem !important;
+    }
+
+    .py-5 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+
+    /* Fix text wrapping */
+    h1, h2, h3, h4, h5, h6, p {
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+
+    /* Fix button and badge alignment */
+    .badge {
+        white-space: normal !important;
+        text-align: center !important;
+    }
+
+    .btn {
+        white-space: normal !important;
+        text-align: center !important;
+    }
+}
+
+/* Tablet adjustments */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    img[src*="corpsloth.png"] {
+        max-width: 90% !important;
+        margin: 0 auto !important;
+    }
+
+    .col-md-6.text-center {
+        padding: 0 2rem !important;
+    }
+}
+
+/* Image container styles */
+.image-container {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 400px !important;
+    margin: 0 auto !important;
+    overflow: hidden !important;
+}
+
+.image-container img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    object-fit: contain !important;
+}
+
+/* Mobile image container adjustments */
+@media (max-width: 767.98px) {
+    .image-container {
+        max-width: 100% !important;
+        padding: 0 1rem !important;
+    }
+
+    .image-container img {
+        border-radius: 1rem !important;
+    }
+}
+
+/* Tablet image container adjustments */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .image-container {
+        max-width: 90% !important;
+    }
+}
+
+/* Testimonial dots fixes */
+.testimonial-dots {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+    margin-top: 1rem !important;
+}
+
+.testimonial-dots button {
+    width: 8px !important;
+    height: 8px !important;
+    min-width: 8px !important;
+    min-height: 8px !important;
+    max-width: 8px !important;
+    max-height: 8px !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 50% !important;
+    background-color: rgba(255, 255, 255, 0.5) !important;
+    transition: background-color 0.2s ease !important;
+}
+
+.testimonial-dots button.active {
+    background-color: #ffffff !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 767.98px) {
+    .testimonial-dots {
+        gap: 0.75rem !important;
+    }
+
+    .testimonial-dots button {
+        width: 6px !important;
+        height: 6px !important;
+        min-width: 6px !important;
+        min-height: 6px !important;
+        max-width: 6px !important;
+        max-height: 6px !important;
+    }
+}
+
+/* Fix checkmark circles in about section */
+.d-flex .rounded-circle[style*="width: 48px"] {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+    max-width: 48px !important;
+    max-height: 48px !important;
+    aspect-ratio: 1 !important;
+    flex-shrink: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Fix SVG checkmark size */
+.d-flex .rounded-circle svg {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
+    max-width: 24px !important;
+    max-height: 24px !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 767.98px) {
+    .d-flex .rounded-circle[style*="width: 48px"] {
+        width: 40px !important;
+        height: 40px !important;
+        min-width: 40px !important;
+        min-height: 40px !important;
+        max-width: 40px !important;
+        max-height: 40px !important;
+    }
+
+    .d-flex .rounded-circle svg {
+        width: 20px !important;
+        height: 20px !important;
+        min-width: 20px !important;
+        min-height: 20px !important;
+        max-width: 20px !important;
+        max-height: 20px !important;
+    }
+}
+
+/* Fix alignment of stat circles */
+.row-cols-2 .col .d-flex {
+    align-items: center !important;
+    height: 100% !important;
+    margin: 0 !important;
+}
+
+.row-cols-2 .col {
+    display: flex !important;
+    align-items: center !important;
+    margin-bottom: 1rem !important;
+}
+
+/* Ensure consistent circle positioning */
+.d-flex .rounded-circle[style*="width: 48px"] {
+    margin: 0 1rem 0 0 !important;
+    position: relative !important;
+    top: 0 !important;
+    transform: none !important;
+}
+
+/* Fix content alignment next to circles */
+.d-flex .rounded-circle + div {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+}
+
+/* Fix text alignment */
+.d-flex .rounded-circle + div h3,
+.d-flex .rounded-circle + div p {
+    margin: 0 !important;
+    line-height: 1.4 !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 767.98px) {
+    .row-cols-2 .col {
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .d-flex .rounded-circle[style*="width: 48px"] {
+        margin: 0 0.75rem 0 0 !important;
+    }
+}
+
+/* Footer content styles */
+footer .text-center img {
+    display: block !important;
+    margin: 0 auto !important;
+    max-width: 200px !important;
+    height: auto !important;
+}
+
+footer hr {
+    margin: 1.5rem auto !important;
+    opacity: 0.1 !important;
+}
+
+footer .small {
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+    max-width: 800px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+@media (max-width: 767.98px) {
+    footer .text-center img {
+        max-width: 150px !important;
+    }
+    
+    footer .small {
+        font-size: 0.8125rem !important;
+        padding: 0 1rem !important;
+    }
+}
+
+/* Footer styles */
+.bg-primary-gradient {
+    background: linear-gradient(180deg, #F8F9FA 0%, #D7D7FF 100%) !important;
+}
+
+footer {
+    margin-top: 0 !important;
+    position: relative !important;
+}
+
+/* Remove unwanted gaps */
+section:last-of-type {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+footer .container {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Text color adjustments */
+footer .text-muted {
+    color: #212529 !important;
+}
+
+footer .footer-links a {
+    color: #212529 !important;
+    transition: color 0.2s ease !important;
+}
+
+footer .footer-links a:hover {
+    color: #000000 !important;
+}
+
+footer hr {
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Feature list styling */
+.list-unstyled {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.list-unstyled li {
+    display: flex !important;
+    align-items: flex-start !important;
+    margin-bottom: 0.75rem !important;
+    line-height: 1.4 !important;
+}
+
+.list-unstyled li svg {
+    flex-shrink: 0 !important;
+    margin-right: 0.75rem !important;
+    margin-top: 0.25rem !important;
+    width: 1em !important;
+    height: 1em !important;
+}
+
+/* Card title and content spacing */
+.card-title {
+    margin-bottom: 1rem !important;
+}
+
+.card-body {
+    padding: 1.5rem !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 767.98px) {
+    .list-unstyled li {
+        margin-bottom: 0.5rem !important;
+    }
+
+    .card-body {
+        padding: 1.25rem !important;
+    }
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--sloth-purple);
+    color: #ffffff;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 99994;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.back-to-top:hover {
+    background: var(--sloth-dark-purple);
+    color: #ffffff;
+    transform: translateY(-3px);
+}
+
+.back-to-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Adjust position when mobile CTA is present */
+@media (max-width: 767.98px) {
+    .back-to-top {
+        bottom: 120px; /* Increased from 90px to prevent overlap */
     }
 } 

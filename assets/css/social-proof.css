@@ -6,19 +6,17 @@
     border-radius: 8px;
     padding: 12px 16px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    z-index: 99993;
     max-width: 300px;
-    transform: translateY(150%);
-    transition: transform 0.3s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
     border-left: 4px solid #6366f1;
 }
 
 .social-proof-notification.show {
-    transform: translateY(0);
-}
-
-.social-proof-notification.hide {
-    transform: translateY(150%);
+    opacity: 1;
+    visibility: visible;
 }
 
 .notification-content {
@@ -36,4 +34,14 @@
 .notification-location {
     color: #6366f1;
     font-weight: 600;
+}
+
+/* Mobile adjustments */
+@media (max-width: 767.98px) {
+    .social-proof-notification {
+        width: calc(100% - 2.5rem);
+        left: 1.25rem;
+        bottom: 120px; /* Align with back-to-top button */
+        max-width: none;
+    }
 } 
