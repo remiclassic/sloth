@@ -481,6 +481,7 @@ html[data-bs-theme] .avatar-circle .text-primary {
 /* Mobile CTA styles */
 .mobile-cta {
     background-color: #ffffff !important;
+    z-index: 9999 !important; /* Ensure it's above everything */
 }
 
 .mobile-cta .badge.bg-warning {
@@ -591,15 +592,53 @@ html[data-bs-theme] .avatar-circle .text-primary {
     
     /* Improve mobile CTA */
     .mobile-cta {
+        padding: 0.5rem !important;
+        background: #ffffff !important;
+        border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+        z-index: 9999 !important; /* Ensure it's above everything */
+    }
+    
+    .mobile-cta .container {
+        padding: 0.5rem !important;
+    }
+    
+    .mobile-cta .rounded-pill {
         padding: 0.75rem !important;
     }
     
-    .mobile-cta .badge {
-        font-size: 0.8rem !important;
+    /* Stack badge and text vertically */
+    .mobile-cta .d-flex.align-items-center {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 0.25rem !important;
     }
     
-    .mobile-cta .btn {
+    .mobile-cta .badge.bg-warning {
+        margin-bottom: 0.25rem !important;
+        font-size: 0.75rem !important;
+        padding: 0.35rem 0.75rem !important;
+    }
+    
+    .mobile-cta .text-muted {
+        font-size: 0.75rem !important;
+        margin-top: -0.25rem !important;
+    }
+    
+    /* Hide "Start Your Journey" on mobile */
+    .mobile-cta .text-dark.fw-bold {
+        display: none !important;
+    }
+    
+    /* Adjust button size and spacing */
+    .mobile-cta .btn-primary {
         padding: 0.5rem 1rem !important;
+        font-size: 0.875rem !important;
+        min-height: 38px !important;
+    }
+    
+    /* Add proper spacing between elements */
+    .mobile-cta .d-flex.align-items-center > * {
+        margin-right: 0 !important;
     }
     
     /* Fix modal dialogs on mobile */
@@ -625,7 +664,8 @@ html[data-bs-theme] .avatar-circle .text-primary {
     .social-proof-notification {
         width: calc(100% - 2rem) !important;
         left: 1rem !important;
-        bottom: 5rem !important; /* Above mobile CTA */
+        bottom: 5rem !important;
+        z-index: 9998 !important; /* Just below mobile CTA */
     }
 }
 
@@ -664,5 +704,44 @@ html[data-bs-theme] .avatar-circle .text-primary {
     
     .navbar-nav .nav-link {
         padding: 0.75rem 1rem !important;
+    }
+}
+
+/* Prevent horizontal scrolling */
+html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    position: relative !important;
+}
+
+/* Ensure containers don't cause overflow */
+.container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px !important;
     }
 } 
