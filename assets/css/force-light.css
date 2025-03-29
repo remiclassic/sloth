@@ -538,4 +538,131 @@ html[data-bs-theme] .avatar-circle .text-primary {
     background-color: var(--sloth-purple) !important;
     border-color: var(--sloth-purple) !important;
     color: #ffffff !important;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 767.98px) {
+    /* Adjust font sizes for mobile */
+    h1.display-4 {
+        font-size: calc(1.475rem + 2.7vw) !important;
+    }
+    
+    .lead {
+        font-size: 1.1rem !important;
+    }
+    
+    /* Improve spacing in hero section */
+    header .container {
+        padding-top: 2rem !important;
+        padding-bottom: 5rem !important; /* Extra padding for mobile CTA */
+    }
+    
+    /* Adjust testimonial slider for mobile */
+    .testimonial-slide {
+        padding: 1rem !important;
+    }
+    
+    .testimonial-slide p {
+        font-size: 0.9rem !important;
+    }
+    
+    /* Improve mobile navigation */
+    .navbar {
+        padding: 0.5rem 0 !important;
+    }
+    
+    .navbar-collapse {
+        background: #ffffff !important;
+        padding: 1rem !important;
+        border-radius: 0.5rem !important;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+    }
+    
+    /* Adjust button sizes for touch */
+    .btn {
+        padding: 0.75rem 1.5rem !important;
+        font-size: 1rem !important;
+    }
+    
+    .btn-sm {
+        padding: 0.5rem 1rem !important;
+        font-size: 0.875rem !important;
+    }
+    
+    /* Improve mobile CTA */
+    .mobile-cta {
+        padding: 0.75rem !important;
+    }
+    
+    .mobile-cta .badge {
+        font-size: 0.8rem !important;
+    }
+    
+    .mobile-cta .btn {
+        padding: 0.5rem 1rem !important;
+    }
+    
+    /* Fix modal dialogs on mobile */
+    .modal-dialog {
+        margin: 0.5rem !important;
+    }
+    
+    .modal-content {
+        border-radius: 1rem !important;
+    }
+    
+    /* Adjust card spacing */
+    .card {
+        margin-bottom: 1rem !important;
+    }
+    
+    /* Fix form elements */
+    input, select, textarea {
+        font-size: 16px !important; /* Prevent iOS zoom */
+    }
+    
+    /* Improve social proof notification */
+    .social-proof-notification {
+        width: calc(100% - 2rem) !important;
+        left: 1rem !important;
+        bottom: 5rem !important; /* Above mobile CTA */
+    }
+}
+
+/* Tablet-specific adjustments */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .container {
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+    }
+    
+    h1.display-4 {
+        font-size: calc(1.475rem + 3.3vw) !important;
+    }
+}
+
+/* Landscape mode adjustments */
+@media (max-height: 576px) and (orientation: landscape) {
+    header .container {
+        padding-top: 1rem !important;
+        padding-bottom: 4rem !important;
+    }
+    
+    .mobile-cta {
+        position: sticky !important;
+    }
+}
+
+/* Fix touch targets */
+@media (hover: none) and (pointer: coarse) {
+    .btn,
+    .nav-link,
+    .navbar-toggler {
+        min-height: 44px !important; /* Apple's recommended minimum */
+        min-width: 44px !important;
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 0.75rem 1rem !important;
+    }
 } 
