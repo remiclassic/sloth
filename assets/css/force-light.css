@@ -481,7 +481,42 @@ html[data-bs-theme] .avatar-circle .text-primary {
 /* Mobile CTA styles */
 .mobile-cta {
     background-color: #ffffff !important;
-    z-index: 9999 !important; /* Ensure it's above everything */
+    z-index: 99999 !important; /* Highest z-index */
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    transform: translateZ(0) !important; /* Create new stacking context */
+    will-change: transform !important; /* Optimize for fixed positioning */
+}
+
+/* Ensure modals don't overlap mobile CTA */
+.modal {
+    z-index: 99998 !important;
+}
+
+.modal-backdrop {
+    z-index: 99997 !important;
+}
+
+/* Ensure dropdowns don't overlap */
+.dropdown-menu {
+    z-index: 99996 !important;
+}
+
+/* Ensure tooltips don't overlap */
+.tooltip {
+    z-index: 99995 !important;
+}
+
+/* Ensure popovers don't overlap */
+.popover {
+    z-index: 99994 !important;
+}
+
+/* Ensure social proof stays below CTA */
+.social-proof-notification {
+    z-index: 99993 !important;
 }
 
 .mobile-cta .badge.bg-warning {
@@ -595,7 +630,7 @@ html[data-bs-theme] .avatar-circle .text-primary {
         padding: 0.5rem !important;
         background: #ffffff !important;
         border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
-        z-index: 9999 !important; /* Ensure it's above everything */
+        z-index: 99999 !important; /* Highest z-index */
     }
     
     .mobile-cta .container {
@@ -665,7 +700,17 @@ html[data-bs-theme] .avatar-circle .text-primary {
         width: calc(100% - 2rem) !important;
         left: 1rem !important;
         bottom: 5rem !important;
-        z-index: 9998 !important; /* Just below mobile CTA */
+        z-index: 99993 !important; /* Just below mobile CTA */
+    }
+    
+    /* Mobile-specific z-index adjustments */
+    .mobile-cta {
+        z-index: 99999 !important;
+    }
+    
+    /* Ensure proper stacking on mobile */
+    .navbar-collapse {
+        z-index: 99990 !important;
     }
 }
 
@@ -707,41 +752,140 @@ html[data-bs-theme] .avatar-circle .text-primary {
     }
 }
 
-/* Prevent horizontal scrolling */
+/* Fix horizontal scrolling and overflow issues */
 html, body {
     overflow-x: hidden !important;
     width: 100% !important;
     position: relative !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: 100vw !important;
 }
 
-/* Ensure containers don't cause overflow */
-.container {
-    width: 100% !important;
+/* Ensure all containers and rows don't cause overflow */
+.container, 
+.container-fluid,
+.row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: env(safe-area-inset-left, 1rem) !important;
+    padding-right: env(safe-area-inset-right, 1rem) !important;
     max-width: 100% !important;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
+    width: 100% !important;
+    overflow-x: hidden !important;
 }
 
+/* Fix mobile CTA container */
+.mobile-cta .container {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+}
+
+/* Ensure images don't cause overflow */
+img {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+/* Fix potential SVG overflow */
+svg {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+/* Mobile-specific fixes */
+@media (max-width: 767.98px) {
+    /* Adjust padding and margins */
+    .container {
+        padding-left: env(safe-area-inset-left, 0.75rem) !important;
+        padding-right: env(safe-area-inset-right, 0.75rem) !important;
+    }
+    
+    /* Fix row margins */
+    .row {
+        margin-left: -0.5rem !important;
+        margin-right: -0.5rem !important;
+    }
+    
+    /* Fix column padding */
+    [class*="col-"] {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+    
+    /* Ensure text doesn't overflow */
+    h1, h2, h3, h4, h5, h6, p, span {
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+    
+    /* Fix badge wrapping */
+    .badge {
+        white-space: normal !important;
+        text-align: center !important;
+    }
+    
+    /* Adjust mobile CTA */
+    .mobile-cta {
+        width: 100% !important;
+        left: 0 !important;
+        right: 0 !important;
+        padding: 0.5rem env(safe-area-inset-right, 0.5rem) calc(0.5rem + env(safe-area-inset-bottom, 0px)) env(safe-area-inset-left, 0.5rem) !important;
+    }
+    
+    .mobile-cta .rounded-pill {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    /* Fix button text wrapping */
+    .btn {
+        white-space: normal !important;
+        word-wrap: break-word !important;
+    }
+    
+    /* Ensure flex items don't overflow */
+    .d-flex {
+        flex-wrap: wrap !important;
+    }
+    
+    /* Fix testimonial slider */
+    .testimonial-slide {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+/* Fix container max-widths */
 @media (min-width: 576px) {
     .container {
-        max-width: 540px !important;
+        max-width: min(540px, 100% - 1.5rem) !important;
     }
 }
 
 @media (min-width: 768px) {
     .container {
-        max-width: 720px !important;
+        max-width: min(720px, 100% - 2rem) !important;
     }
 }
 
 @media (min-width: 992px) {
     .container {
-        max-width: 960px !important;
+        max-width: min(960px, 100% - 2rem) !important;
     }
 }
 
 @media (min-width: 1200px) {
     .container {
-        max-width: 1140px !important;
+        max-width: min(1140px, 100% - 2rem) !important;
+    }
+}
+
+/* Fix notched device issues */
+@supports(padding: max(0px)) {
+    body {
+        padding-left: min(0vw, env(safe-area-inset-left)) !important;
+        padding-right: min(0vw, env(safe-area-inset-right)) !important;
+        padding-bottom: min(0vh, env(safe-area-inset-bottom)) !important;
     }
 } 

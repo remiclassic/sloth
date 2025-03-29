@@ -1,0 +1,25 @@
+/* Remove dark mode styles */
+body {
+    background-color: #ffffff; /* Ensure light background */
+    color: #000000; /* Ensure dark text for readability */
+}
+
+/* Remove dark mode media query */
+@media (prefers-color-scheme: dark) {
+    /* Remove or comment out these styles */
+    /* background-color: #000000; */
+    /* color: #ffffff; */
+}
+
+/* Force light mode */
+:root {
+  color-scheme: light only;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Ensure body also has light background */
+body {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+} 

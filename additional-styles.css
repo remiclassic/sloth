@@ -1,0 +1,5 @@
+/* Ensure light theme */
+body {
+    background-color: #ffffff; /* Ensure light background */
+    color: #000000; /* Ensure dark text for readability */
+} 
