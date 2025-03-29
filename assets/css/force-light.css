@@ -627,90 +627,89 @@ html[data-bs-theme] .avatar-circle .text-primary {
     
     /* Improve mobile CTA */
     .mobile-cta {
-        padding: 0.5rem !important;
+        padding: 0.75rem 1.25rem !important;
         background: #ffffff !important;
         border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
-        z-index: 99999 !important; /* Highest z-index */
-    }
-    
-    .mobile-cta .container {
-        padding: 0.5rem !important;
-    }
-    
-    .mobile-cta .rounded-pill {
-        padding: 0.75rem !important;
-    }
-    
-    /* Stack badge and text vertically */
-    .mobile-cta .d-flex.align-items-center {
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        gap: 0.25rem !important;
-    }
-    
-    .mobile-cta .badge.bg-warning {
-        margin-bottom: 0.25rem !important;
-        font-size: 0.75rem !important;
-        padding: 0.35rem 0.75rem !important;
-    }
-    
-    .mobile-cta .text-muted {
-        font-size: 0.75rem !important;
-        margin-top: -0.25rem !important;
-    }
-    
-    /* Hide "Start Your Journey" on mobile */
-    .mobile-cta .text-dark.fw-bold {
-        display: none !important;
-    }
-    
-    /* Adjust button size and spacing */
-    .mobile-cta .btn-primary {
-        padding: 0.5rem 1rem !important;
-        font-size: 0.875rem !important;
-        min-height: 38px !important;
-    }
-    
-    /* Add proper spacing between elements */
-    .mobile-cta .d-flex.align-items-center > * {
-        margin-right: 0 !important;
-    }
-    
-    /* Fix modal dialogs on mobile */
-    .modal-dialog {
-        margin: 0.5rem !important;
-    }
-    
-    .modal-content {
-        border-radius: 1rem !important;
-    }
-    
-    /* Adjust card spacing */
-    .card {
-        margin-bottom: 1rem !important;
-    }
-    
-    /* Fix form elements */
-    input, select, textarea {
-        font-size: 16px !important; /* Prevent iOS zoom */
-    }
-    
-    /* Improve social proof notification */
-    .social-proof-notification {
-        width: calc(100% - 2rem) !important;
-        left: 1rem !important;
-        bottom: 5rem !important;
-        z-index: 99993 !important; /* Just below mobile CTA */
-    }
-    
-    /* Mobile-specific z-index adjustments */
-    .mobile-cta {
         z-index: 99999 !important;
     }
     
-    /* Ensure proper stacking on mobile */
-    .navbar-collapse {
-        z-index: 99990 !important;
+    .mobile-cta .container {
+        padding: 0 !important;
+    }
+    
+    .mobile-cta .rounded-pill {
+        padding: 0.75rem 1rem !important;
+    }
+    
+    /* Update CTA layout to horizontal */
+    .mobile-cta .d-flex.align-items-center {
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 0.5rem !important;
+        width: 100% !important;
+    }
+
+    /* Style the left side of CTA */
+    .mobile-cta .badge-container {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.75rem !important;
+    }
+
+    .mobile-cta .badge.bg-warning {
+        margin: 0 !important;
+        font-size: 0.8rem !important;
+        padding: 0.35rem 0.75rem !important;
+    }
+
+    /* Show "Start Your Journey" on mobile */
+    .mobile-cta .text-dark.fw-bold {
+        display: inline-block !important;
+        font-size: 0.9rem !important;
+        margin: 0 !important;
+    }
+
+    /* Adjust button size */
+    .mobile-cta .btn-primary {
+        padding: 0.5rem 1.25rem !important;
+        font-size: 0.9rem !important;
+        min-height: 38px !important;
+        white-space: nowrap !important;
+    }
+
+    /* Fix social proof notification position */
+    .social-proof-notification {
+        width: calc(100% - 2.5rem) !important;
+        left: 1.25rem !important;
+        bottom: 6rem !important;
+        z-index: 99993 !important;
+    }
+
+    /* Fix section padding and margins */
+    section {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+    }
+
+    /* Ensure proper spacing between sections */
+    section + section {
+        margin-top: 0 !important;
+    }
+
+    /* Fix any nested scrollable areas */
+    .overflow-auto,
+    .overflow-scroll,
+    [style*="overflow: auto"],
+    [style*="overflow: scroll"] {
+        overflow: visible !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    /* Fix potential header overlap issues */
+    .navbar + section,
+    .navbar + header {
+        padding-top: 4.5rem !important;
     }
 }
 
@@ -752,7 +751,7 @@ html[data-bs-theme] .avatar-circle .text-primary {
     }
 }
 
-/* Fix horizontal scrolling and overflow issues */
+/* Base mobile fixes */
 html, body {
     overflow-x: hidden !important;
     width: 100% !important;
@@ -760,99 +759,126 @@ html, body {
     margin: 0 !important;
     padding: 0 !important;
     max-width: 100vw !important;
+    -webkit-overflow-scrolling: touch !important;
 }
 
-/* Ensure all containers and rows don't cause overflow */
+/* Container and section fixes */
 .container, 
-.container-fluid,
-.row {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    padding-left: env(safe-area-inset-left, 1rem) !important;
-    padding-right: env(safe-area-inset-right, 1rem) !important;
-    max-width: 100% !important;
+.container-fluid {
     width: 100% !important;
-    overflow-x: hidden !important;
-}
-
-/* Fix mobile CTA container */
-.mobile-cta .container {
-    padding-left: 0.5rem !important;
-    padding-right: 0.5rem !important;
-}
-
-/* Ensure images don't cause overflow */
-img {
     max-width: 100% !important;
-    height: auto !important;
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+    overflow: visible !important;
 }
 
-/* Fix potential SVG overflow */
-svg {
-    max-width: 100% !important;
-    height: auto !important;
+/* Row and column fixes */
+.row {
+    margin-left: -1.25rem !important;
+    margin-right: -1.25rem !important;
+    overflow: visible !important;
 }
 
-/* Mobile-specific fixes */
+[class*="col-"] {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+    overflow: visible !important;
+}
+
+/* Section padding fixes */
+section {
+    overflow: visible !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* Mobile-specific adjustments */
 @media (max-width: 767.98px) {
-    /* Adjust padding and margins */
-    .container {
-        padding-left: env(safe-area-inset-left, 0.75rem) !important;
-        padding-right: env(safe-area-inset-right, 0.75rem) !important;
-    }
-    
-    /* Fix row margins */
-    .row {
-        margin-left: -0.5rem !important;
-        margin-right: -0.5rem !important;
-    }
-    
-    /* Fix column padding */
-    [class*="col-"] {
-        padding-left: 0.5rem !important;
-        padding-right: 0.5rem !important;
-    }
-    
-    /* Ensure text doesn't overflow */
-    h1, h2, h3, h4, h5, h6, p, span {
-        word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
-    }
-    
-    /* Fix badge wrapping */
-    .badge {
-        white-space: normal !important;
-        text-align: center !important;
-    }
-    
     /* Adjust mobile CTA */
     .mobile-cta {
-        width: 100% !important;
-        left: 0 !important;
-        right: 0 !important;
-        padding: 0.5rem env(safe-area-inset-right, 0.5rem) calc(0.5rem + env(safe-area-inset-bottom, 0px)) env(safe-area-inset-left, 0.5rem) !important;
+        padding: 0.75rem 1.25rem !important;
+        background: #ffffff !important;
+        border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+        z-index: 99999 !important;
     }
-    
+
+    .mobile-cta .container {
+        padding: 0 !important;
+    }
+
     .mobile-cta .rounded-pill {
+        padding: 0.75rem 1rem !important;
+    }
+
+    /* Update CTA layout to horizontal */
+    .mobile-cta .d-flex.align-items-center {
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 0.5rem !important;
         width: 100% !important;
-        max-width: 100% !important;
     }
-    
-    /* Fix button text wrapping */
-    .btn {
-        white-space: normal !important;
-        word-wrap: break-word !important;
+
+    /* Style the left side of CTA */
+    .mobile-cta .badge-container {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.75rem !important;
     }
-    
-    /* Ensure flex items don't overflow */
-    .d-flex {
-        flex-wrap: wrap !important;
+
+    .mobile-cta .badge.bg-warning {
+        margin: 0 !important;
+        font-size: 0.8rem !important;
+        padding: 0.35rem 0.75rem !important;
     }
-    
-    /* Fix testimonial slider */
-    .testimonial-slide {
-        width: 100% !important;
-        max-width: 100% !important;
+
+    /* Show "Start Your Journey" on mobile */
+    .mobile-cta .text-dark.fw-bold {
+        display: inline-block !important;
+        font-size: 0.9rem !important;
+        margin: 0 !important;
+    }
+
+    /* Adjust button size */
+    .mobile-cta .btn-primary {
+        padding: 0.5rem 1.25rem !important;
+        font-size: 0.9rem !important;
+        min-height: 38px !important;
+        white-space: nowrap !important;
+    }
+
+    /* Fix social proof notification position */
+    .social-proof-notification {
+        width: calc(100% - 2.5rem) !important;
+        left: 1.25rem !important;
+        bottom: 6rem !important;
+        z-index: 99993 !important;
+    }
+
+    /* Fix section padding and margins */
+    section {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+    }
+
+    /* Ensure proper spacing between sections */
+    section + section {
+        margin-top: 0 !important;
+    }
+
+    /* Fix any nested scrollable areas */
+    .overflow-auto,
+    .overflow-scroll,
+    [style*="overflow: auto"],
+    [style*="overflow: scroll"] {
+        overflow: visible !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    /* Fix potential header overlap issues */
+    .navbar + section,
+    .navbar + header {
+        padding-top: 4.5rem !important;
     }
 }
 
