@@ -914,4 +914,128 @@ section {
         padding-right: min(0vw, env(safe-area-inset-right)) !important;
         padding-bottom: min(0vh, env(safe-area-inset-bottom)) !important;
     }
+}
+
+/* Footer styles */
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+}
+
+.footer-links a {
+    color: #6c757d;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+    text-align: center;
+    width: auto;
+    min-width: 120px;
+}
+
+.footer-links a:hover {
+    color: var(--sloth-purple);
+}
+
+/* Footer mobile adjustments */
+@media (max-width: 767.98px) {
+    .footer-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+        width: 100%;
+    }
+
+    .footer-links a {
+        width: 100%;
+        text-align: center;
+        padding: 0.75rem 0;
+        font-size: 0.9rem;
+        min-width: 100%;
+    }
+
+    .footer-payment-icons {
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+    }
+}
+
+/* Footer tablet adjustments */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .footer-links {
+        justify-content: center;
+        gap: 1.5rem;
+    }
+    
+    .footer-links a {
+        min-width: 140px;
+    }
+}
+
+/* Fix testimonial circles */
+.testimonial-slide .avatar-circle {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+    max-width: 48px !important;
+    max-height: 48px !important;
+    aspect-ratio: 1 !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+    flex-shrink: 0 !important;
+    background: #ffffff !important;
+}
+
+.testimonial-slide .avatar-circle span {
+    font-size: 1.25rem !important;
+    line-height: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Testimonial slide adjustments */
+.testimonial-slide {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.testimonial-slide .d-flex {
+    align-items: center !important;
+    gap: 1rem !important;
+}
+
+/* Mobile adjustments for testimonials */
+@media (max-width: 767.98px) {
+    .testimonial-slide .avatar-circle {
+        width: 40px !important;
+        height: 40px !important;
+        min-width: 40px !important;
+        min-height: 40px !important;
+        max-width: 40px !important;
+        max-height: 40px !important;
+    }
+
+    .testimonial-slide .avatar-circle span {
+        font-size: 1rem !important;
+    }
+
+    .testimonial-slide {
+        padding: 1rem !important;
+    }
+
+    .testimonial-slide .d-flex {
+        gap: 0.75rem !important;
+    }
 } 
