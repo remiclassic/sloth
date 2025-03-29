@@ -1,0 +1,541 @@
+/* Force light mode globally */
+:root {
+    color-scheme: light only !important;
+    forced-colors: light !important;
+    
+    /* Define custom colors */
+    --sloth-purple: #4F46E5;
+    --sloth-light-purple: #B4B3F6;
+    --sloth-yellow: #fbbf24;
+}
+
+/* Override any dark mode preferences */
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: light only !important;
+    }
+    
+    html[data-bs-theme="dark"],
+    html[data-bs-theme="auto"] {
+        data-bs-theme: light !important;
+    }
+    
+    body {
+        background-color: #ffffff !important;
+        color: #212529 !important;
+    }
+    
+    .navbar,
+    .card:not(header .card),
+    .modal,
+    .offcanvas,
+    .dropdown-menu {
+        background-color: #ffffff !important;
+        color: #212529 !important;
+    }
+    
+    /* Force light text colors except in specific sections */
+    .text-white:not(.bg-primary *):not(.about-section *):not(header.bg-primary *):not(header *) {
+        color: #212529 !important;
+    }
+    
+    /* Force light backgrounds except in specific sections */
+    .bg-dark:not(.bg-primary):not(.about-section):not(header.bg-primary):not(header) {
+        background-color: #ffffff !important;
+    }
+
+    /* Preserve hero section styles */
+    header.bg-primary,
+    header {
+        background: #6366f1 !important;
+        background: linear-gradient(135deg, #6366f1, #4f46e5) !important;
+    }
+
+    header * {
+        color: #ffffff !important;
+    }
+
+    header .badge {
+        background-color: #fbbf24 !important;
+    }
+
+    header .card {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    header .btn-primary {
+        background: #ffffff !important;
+        color: #6366f1 !important;
+    }
+
+    header .btn-secondary {
+        background: rgba(255, 255, 255, 0.1) !important;
+        color: #ffffff !important;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Preserve specific colors in hero section */
+    header .badge.bg-warning {
+        background-color: var(--sloth-yellow) !important;
+        color: #000000 !important;
+    }
+    
+    header .testimonial-slide p.text-white-50 {
+        color: var(--sloth-light-purple) !important;
+    }
+    
+    header .btn-light {
+        color: var(--sloth-purple) !important;
+    }
+    
+    header .btn-outline-light:hover {
+        color: #000000 !important;
+    }
+    
+    /* Main headings */
+    .display-6,
+    h2.fw-bold:not(header h2),
+    .h2.fw-bold:not(header .h2) {
+        color: var(--sloth-purple) !important;
+    }
+    
+    /* Badge colors */
+    .badge.bg-primary {
+        background-color: rgba(79, 70, 229, 0.1) !important;
+        color: var(--sloth-purple) !important;
+    }
+}
+
+/* Ensure Bootstrap components stay in light mode except in specific sections */
+[data-bs-theme="dark"] {
+    --bs-primary: var(--sloth-purple) !important;
+    --bs-body-color: #212529 !important;
+    --bs-body-bg: #ffffff !important;
+    --bs-emphasis-color: #212529 !important;
+    --bs-emphasis-color-rgb: 33, 37, 41 !important;
+    --bs-secondary-color: rgba(33, 37, 41, 0.75) !important;
+    --bs-secondary-color-rgb: 33, 37, 41 !important;
+    --bs-secondary-bg: #e9ecef !important;
+    --bs-secondary-bg-rgb: 233, 236, 239 !important;
+    --bs-tertiary-color: rgba(33, 37, 41, 0.5) !important;
+    --bs-tertiary-color-rgb: 33, 37, 41 !important;
+    --bs-tertiary-bg: #f8f9fa !important;
+    --bs-tertiary-bg-rgb: 248, 249, 250 !important;
+    --bs-heading-color: var(--sloth-purple) !important;
+}
+
+/* Exceptions for sections that should have light text on dark backgrounds */
+header.bg-primary,
+.about-section,
+.bg-primary {
+    --bs-emphasis-color: #ffffff !important;
+    --bs-body-color: #ffffff !important;
+    --bs-heading-color: #ffffff !important;
+    color: #ffffff !important;
+}
+
+/* Hero section specific overrides */
+header.bg-primary *:not(.bundle-notes):not(.bundle-notes *),
+header *:not(.bundle-notes):not(.bundle-notes *) {
+    color: #ffffff !important;
+}
+
+header.bg-primary,
+header {
+    background: #6366f1 !important;
+    background: linear-gradient(135deg, #6366f1, #4f46e5) !important;
+}
+
+header .badge {
+    background-color: #fbbf24 !important;
+    color: #ffffff !important;
+}
+
+header .btn-primary {
+    background: #ffffff !important;
+    color: #6366f1 !important;
+}
+
+header .card {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Button hover states */
+.btn-outline-light:hover {
+    color: #000000 !important;
+}
+
+.btn-light {
+    color: var(--sloth-purple) !important;
+}
+
+/* Testimonial text color */
+.testimonial-slide p.text-white-50 {
+    color: var(--sloth-light-purple) !important;
+}
+
+/* Bundle-specific journey notes text color */
+.bundle-notes,
+.bundle-notes *,
+.card.bg-primary.bg-opacity-10 h4.h5.mb-3 {
+    color: #000000 !important;
+}
+
+.bundle-notes strong {
+    color: #000000 !important;
+    font-weight: 600;
+}
+
+.bundle-notes span {
+    color: #000000 !important;
+}
+
+/* Ensure the Bundle-Specific Journey Notes heading stays black */
+.card.bg-primary.bg-opacity-10 h4.h5 {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+}
+
+/* Override any potential theme or parent color inheritance */
+[data-bs-theme="dark"] .card.bg-primary.bg-opacity-10 h4.h5,
+[data-bs-theme="light"] .card.bg-primary.bg-opacity-10 h4.h5,
+html[data-bs-theme] .card.bg-primary.bg-opacity-10 h4.h5 {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+}
+
+/* Ensure Freedom Blueprint text stays white in hero */
+h2.display-5.text-white {
+    color: #ffffff !important;
+}
+
+/* Specific text color overrides */
+h1:contains("Revolutionary 2025 Money-Making Blueprint"),
+h1.display-3:contains("Revolutionary 2025 Money-Making Blueprint") {
+    color: #000000 !important;
+}
+
+/* Button color fixes */
+.btn-light:hover {
+    color: var(--sloth-purple) !important;
+}
+
+/* Get Started button specific fix */
+a.btn-light[href="#pricing"] {
+    color: var(--sloth-purple) !important;
+}
+
+a.btn-light[href="#pricing"]:hover {
+    color: var(--sloth-purple) !important;
+}
+
+/* Specific text color overrides */
+.badge.bg-warning.text-dark:contains("Revolutionary 2025 Money-Making Blueprint") {
+    color: #000000 !important;
+}
+
+/* Get Started button specific fixes */
+a.btn-light[href="#pricing"],
+a.btn-light[role="button"][href="#pricing"] {
+    color: var(--sloth-purple) !important;
+}
+
+a.btn-light[href="#pricing"]:hover,
+a.btn-light[role="button"][href="#pricing"]:hover {
+    color: var(--sloth-purple) !important;
+}
+
+/* Ensure specific text elements stay black */
+.badge.bg-warning.text-dark {
+    color: #000000 !important;
+}
+
+/* Override header text colors for specific elements */
+header .badge.bg-warning.text-dark,
+header span.badge.bg-warning.text-dark {
+    color: #000000 !important;
+}
+
+/* Ensure the Revolutionary text stays black */
+header span.badge.bg-warning.text-dark.fw-bold {
+    color: #000000 !important;
+}
+
+/* More specific override for the Revolutionary text */
+header .text-center span.badge.bg-warning.text-dark,
+header .text-md-start span.badge.bg-warning.text-dark {
+    color: #000000 !important;
+}
+
+/* Override any header color inheritance */
+header *:not(.bundle-notes):not(.bundle-notes *) {
+    color: #ffffff !important;
+}
+
+header span.badge.bg-warning.text-dark,
+header .badge.bg-warning.text-dark {
+    color: #000000 !important;
+}
+
+/* Preserve specific colors in hero section */
+header .badge.bg-warning {
+    background-color: var(--sloth-yellow) !important;
+}
+
+/* Add specific rules to ensure pricing section text stays white */
+.bg-primary h3.text-white,
+.bg-primary .text-white,
+.bg-primary .text-light {
+    color: #ffffff !important;
+}
+
+/* Specific pricing text elements */
+.bg-primary h3.text-white.mb-3,
+.bg-primary .h2.text-white.mb-0,
+.bg-primary .text-light.text-decoration-line-through {
+    color: #ffffff !important;
+}
+
+/* Pricing section text colors - highly specific selectors */
+.bg-primary h3.text-white.mb-3,
+section .bg-primary h3.text-white.mb-3,
+.bg-primary .h2.text-white.mb-0,
+section .bg-primary .h2.text-white.mb-0,
+.bg-primary .text-light.text-decoration-line-through,
+section .bg-primary .text-light.text-decoration-line-through {
+    color: #ffffff !important;
+}
+
+/* Override for dark mode and incognito */
+@media (prefers-color-scheme: dark) {
+    .bg-primary h3.text-white.mb-3,
+    section .bg-primary h3.text-white.mb-3,
+    .bg-primary .h2.text-white.mb-0,
+    section .bg-primary .h2.text-white.mb-0,
+    .bg-primary .text-light.text-decoration-line-through,
+    section .bg-primary .text-light.text-decoration-line-through {
+        color: #ffffff !important;
+    }
+
+    /* Ensure text stays white in dark mode */
+    [data-bs-theme="dark"] .bg-primary h3.text-white.mb-3,
+    [data-bs-theme="dark"] .bg-primary .h2.text-white.mb-0,
+    [data-bs-theme="dark"] .bg-primary .text-light.text-decoration-line-through {
+        color: #ffffff !important;
+    }
+}
+
+/* Ensure pricing section text stays white */
+.bg-primary:not(header) h3.text-white,
+.bg-primary:not(header) .text-white,
+.bg-primary:not(header) .text-light,
+section .bg-primary h3.text-white,
+section .bg-primary .text-white,
+section .bg-primary .text-light {
+    color: #ffffff !important;
+}
+
+/* Remove any conflicting rules */
+.text-white:not(.bg-primary *):not(.about-section *):not(header.bg-primary *):not(header *) {
+    color: initial;
+}
+
+/* Override Bootstrap's dark mode for these specific elements */
+[data-bs-theme="dark"] .bg-primary h3.text-white,
+[data-bs-theme="dark"] .bg-primary .text-white,
+[data-bs-theme="dark"] .bg-primary .text-light {
+    color: #ffffff !important;
+}
+
+/* Force white text for pricing section - maximum specificity */
+body .bg-primary h3.text-white.mb-3,
+body section .bg-primary h3.text-white.mb-3,
+body .bg-primary .h2.text-white.mb-0,
+html[data-bs-theme] .bg-primary h3.text-white.mb-3,
+html[data-bs-theme] .bg-primary .h2.text-white.mb-0 {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    forced-color-adjust: none !important;
+}
+
+/* Additional override for dark mode and forced colors */
+@media (prefers-color-scheme: dark), (forced-colors: active) {
+    body .bg-primary h3.text-white.mb-3,
+    body .bg-primary .h2.text-white.mb-0,
+    html[data-bs-theme] .bg-primary h3.text-white.mb-3,
+    html[data-bs-theme] .bg-primary .h2.text-white.mb-0 {
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+        forced-color-adjust: none !important;
+    }
+}
+
+/* Maximum specificity override for pricing text */
+html body section .bg-primary h3.text-white.mb-3,
+html body section .bg-primary .h2.text-white.mb-0,
+html body section .bg-primary .text-light.text-decoration-line-through,
+html[data-bs-theme] body section .bg-primary h3.text-white.mb-3,
+html[data-bs-theme] body section .bg-primary .h2.text-white.mb-0,
+html[data-bs-theme] body section .bg-primary .text-light.text-decoration-line-through {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    -moz-text-fill-color: #ffffff !important;
+    -webkit-text-stroke-color: #ffffff !important;
+    text-shadow: none !important;
+    forced-color-adjust: none !important;
+    color-scheme: none !important;
+}
+
+/* Force white text in all color schemes and modes */
+@media all {
+    html body section .bg-primary h3.text-white.mb-3,
+    html body section .bg-primary .h2.text-white.mb-0,
+    html body section .bg-primary .text-light.text-decoration-line-through {
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+        -moz-text-fill-color: #ffffff !important;
+        -webkit-text-stroke-color: #ffffff !important;
+        text-shadow: none !important;
+        forced-color-adjust: none !important;
+        color-scheme: none !important;
+    }
+}
+
+/* Ensure no other styles can override */
+* > .bg-primary h3.text-white.mb-3,
+* > .bg-primary .h2.text-white.mb-0,
+* > .bg-primary .text-light.text-decoration-line-through {
+    color: #ffffff !important;
+}
+
+/* Special offer banner styles */
+.special-offer-banner {
+    background-color: var(--sloth-purple) !important;
+}
+
+/* Force white text in special offer banner */
+.special-offer-banner h3.text-white,
+.special-offer-banner .h2.text-white,
+.special-offer-banner .text-light,
+.special-offer-banner .text-white {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Ensure text stays white in all modes */
+@media (prefers-color-scheme: light), (prefers-color-scheme: dark) {
+    .special-offer-banner h3.text-white,
+    .special-offer-banner .h2.text-white,
+    .special-offer-banner .text-light,
+    .special-offer-banner .text-white {
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+    }
+}
+
+/* Override any Bootstrap theme changes */
+[data-bs-theme=light] .special-offer-banner h3.text-white,
+[data-bs-theme=light] .special-offer-banner .h2.text-white,
+[data-bs-theme=light] .special-offer-banner .text-light,
+[data-bs-theme=dark] .special-offer-banner h3.text-white,
+[data-bs-theme=dark] .special-offer-banner .h2.text-white,
+[data-bs-theme=dark] .special-offer-banner .text-light {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Additional specificity for the exact elements */
+.special-offer-banner h3.text-white.mb-3,
+.special-offer-banner .h2.text-white.mb-0,
+.special-offer-banner .text-light.text-decoration-line-through {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Avatar circle text color */
+.avatar-circle .text-primary,
+.avatar-circle .h5.text-primary {
+    color: #4F46E5 !important;
+    -webkit-text-fill-color: #4F46E5 !important;
+}
+
+/* Override any theme or parent color inheritance for avatar text */
+[data-bs-theme="dark"] .avatar-circle .text-primary,
+[data-bs-theme="light"] .avatar-circle .text-primary,
+html[data-bs-theme] .avatar-circle .text-primary {
+    color: #4F46E5 !important;
+    -webkit-text-fill-color: #4F46E5 !important;
+}
+
+/* Ensure avatar text stays #4F46E5 in all modes */
+@media (prefers-color-scheme: dark), (prefers-color-scheme: light) {
+    .avatar-circle .text-primary,
+    .avatar-circle .h5.text-primary {
+        color: #4F46E5 !important;
+        -webkit-text-fill-color: #4F46E5 !important;
+    }
+}
+
+/* Mobile CTA styles */
+.mobile-cta {
+    background-color: #ffffff !important;
+}
+
+.mobile-cta .badge.bg-warning {
+    background-color: var(--sloth-yellow) !important;
+    color: #000000 !important;
+    font-weight: normal !important;
+}
+
+.mobile-cta .text-dark {
+    color: #000000 !important;
+    font-weight: 600 !important;
+}
+
+.mobile-cta .text-muted {
+    color: #6c757d !important;
+}
+
+.mobile-cta .btn-primary {
+    background-color: var(--sloth-purple) !important;
+    border-color: var(--sloth-purple) !important;
+    color: #ffffff !important;
+    padding-right: 1.5rem !important;
+    padding-left: 1.5rem !important;
+    border-radius: 50rem !important;
+}
+
+.mobile-cta .rounded-pill {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Override any theme changes */
+[data-bs-theme="dark"] .mobile-cta,
+[data-bs-theme="light"] .mobile-cta {
+    background-color: #ffffff !important;
+}
+
+[data-bs-theme="dark"] .mobile-cta .badge.bg-warning,
+[data-bs-theme="light"] .mobile-cta .badge.bg-warning {
+    background-color: var(--sloth-yellow) !important;
+    color: #000000 !important;
+}
+
+[data-bs-theme="dark"] .mobile-cta .text-dark,
+[data-bs-theme="light"] .mobile-cta .text-dark {
+    color: #000000 !important;
+}
+
+[data-bs-theme="dark"] .mobile-cta .text-muted,
+[data-bs-theme="light"] .mobile-cta .text-muted {
+    color: #6c757d !important;
+}
+
+[data-bs-theme="dark"] .mobile-cta .btn-primary,
+[data-bs-theme="light"] .mobile-cta .btn-primary {
+    background-color: var(--sloth-purple) !important;
+    border-color: var(--sloth-purple) !important;
+    color: #ffffff !important;
+} 
