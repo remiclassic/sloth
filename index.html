@@ -814,8 +814,13 @@ For over a decade, I designed magic for giants like Disney, Hasbro, and Universa
                 </div>
             </div>
             <div class="row justify-content-center mb-5">
-                <div class="col-md-6 text-center">
-                    <img src="assets/img/corpsloth.png" alt="Corporate sloth leaving the office" class="img-fluid rounded-4 shadow-sm" style="max-width: 400px; margin: 0 auto;">
+                <div class="col-md-6 text-center px-3">
+                    <div class="image-container">
+                        <img src="assets/img/corpsloth.png" 
+                             alt="Corporate sloth leaving the office" 
+                             class="img-fluid rounded-4 shadow-sm" 
+                             loading="lazy">
+                    </div>
                 </div>
             </div>
             <div class="row gy-4 row-cols-1 row-cols-md-3">
@@ -1097,29 +1102,34 @@ For over a decade, I designed magic for giants like Disney, Hasbro, and Universa
         </div>
     </div>
 
-    <footer class="bg-primary-gradient text-center">
+    <!-- Footer -->
+    <footer class="bg-primary-gradient py-4">
         <div class="container text-muted py-4 py-lg-5">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <ul class="list-inline mb-4">
-                        <li class="list-inline-item me-4"><a class="link-secondary" href="#" data-bs-toggle="modal" data-bs-target="#disclaimerModal">Disclaimer</a></li>
-                        <li class="list-inline-item me-4"><a class="link-secondary" href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a></li>
-                        <li class="list-inline-item me-4"><a class="link-secondary" href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms of Use</a></li>
-                        <li class="list-inline-item"><a class="link-secondary" href="#" data-bs-toggle="modal" data-bs-target="#cookieModal">Cookie Policy</a></li>
-                    </ul>
-                    <div class="text-center mb-4">
-                        <img class="img-fluid" style="max-width: 200px;" src="assets/img/hamocksloth.png" alt="Sloth in hammock illustration">
-                    </div>
-                    <div class="d-flex justify-content-center align-items-center gap-3 mb-4">
-                        <img src="assets/img/security/ssl-secure.svg" alt="SSL Secure" style="height: 32px;">
-                        <img src="assets/img/security/secure-payment.svg" alt="Secure Payments" style="height: 32px;">
-                    </div>
-                    <hr>
-                    <div class="pt-3">
-                        <p class="text-muted mb-4">Disclaimer: This material is for informational purposes only and not financial, legal, or tax advice. Always consult a professional before making decisions. Results vary based on individual effort and external factors. We are not responsible for any outcomes.</p>
-                        <p class="mb-0">© 2025 Strategic Sloth LLC. ALL RIGHTS RESERVED</p>
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <div class="footer-links">
+                        <a href="#" class="text-muted">Disclaimer</a>
+                        <a href="#" class="text-muted">Privacy Policy</a>
+                        <a href="#" class="text-muted">Terms of Use</a>
+                        <a href="#" class="text-muted">Cookie Policy</a>
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="footer-payment-icons d-flex justify-content-center justify-content-md-end align-items-center gap-3">
+                        <img src="assets/images/ssl-secure.svg" alt="SSL Secure" class="payment-icon">
+                        <img src="assets/images/secure-payments.svg" alt="Secure Payments" class="payment-icon">
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <img src="assets/img/hamocksloth.png" alt="Sloth in hammock illustration" class="img-fluid mb-4" style="max-width: 200px;">
+                <hr>
+                <p class="text-muted small mb-4">
+                    Disclaimer: This material is for informational purposes only and not financial, legal, or tax advice. Always consult a professional before making decisions. Results vary based on individual effort and external factors. We are not responsible for any outcomes.
+                </p>
+                <p class="text-muted small mb-0">
+                    © 2025 Strategic Sloth LLC. ALL RIGHTS RESERVED
+                </p>
             </div>
         </div>
     </footer>

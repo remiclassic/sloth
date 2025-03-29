@@ -916,50 +916,42 @@ section {
     }
 }
 
-/* Footer styles */
+/* Footer links alignment fix */
 .footer-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    width: 100%;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 .footer-links a {
-    color: #6c757d;
-    text-decoration: none;
-    padding: 0.5rem 0;
-    white-space: nowrap;
-    transition: color 0.2s ease;
-    text-align: center;
-    width: auto;
-    min-width: 120px;
+    display: block !important;
+    text-align: center !important;
+    padding: 0.75rem !important;
+    margin: 0 !important;
+    color: #6c757d !important;
+    text-decoration: none !important;
+    flex: 0 1 auto !important;
 }
 
-.footer-links a:hover {
-    color: var(--sloth-purple);
+@media (max-width: 767.98px) {
+    .footer-links {
+        flex-direction: column !important;
+        gap: 0 !important;
+    }
+
+    .footer-links a {
+        width: 100% !important;
+        padding: 0.75rem 0 !important;
+        margin: 0 !important;
+    }
 }
 
 /* Footer mobile adjustments */
 @media (max-width: 767.98px) {
-    .footer-links {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.75rem;
-        width: 100%;
-    }
-
-    .footer-links a {
-        width: 100%;
-        text-align: center;
-        padding: 0.75rem 0;
-        font-size: 0.9rem;
-        min-width: 100%;
-    }
-
     .footer-payment-icons {
         justify-content: center;
         gap: 1.5rem;
@@ -969,11 +961,6 @@ section {
 
 /* Footer tablet adjustments */
 @media (min-width: 768px) and (max-width: 991.98px) {
-    .footer-links {
-        justify-content: center;
-        gap: 1.5rem;
-    }
-    
     .footer-links a {
         min-width: 140px;
     }
@@ -1038,4 +1025,343 @@ section {
     .testimonial-slide .d-flex {
         gap: 0.75rem !important;
     }
+}
+
+/* Mobile image and content fixes */
+img.img-fluid {
+    max-width: 100% !important;
+    height: auto !important;
+    width: auto !important;
+    object-fit: contain !important;
+}
+
+.col-md-6 img.img-fluid {
+    display: block !important;
+    margin: 0 auto !important;
+    max-width: calc(100% - 2rem) !important;
+}
+
+/* Mobile section padding and margins */
+@media (max-width: 767.98px) {
+    section {
+        padding: 2rem 0 !important;
+    }
+
+    .container {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    .row {
+        margin-left: -0.5rem !important;
+        margin-right: -0.5rem !important;
+    }
+
+    [class*="col-"] {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+
+    /* Fix image containers */
+    .col-md-6.text-center {
+        padding: 0 1rem !important;
+    }
+
+    /* Specific fix for corpsloth image */
+    img[src*="corpsloth.png"] {
+        max-width: 100% !important;
+        width: 100% !important;
+        height: auto !important;
+        margin: 0 !important;
+        display: block !important;
+        object-fit: contain !important;
+    }
+
+    /* Fix image shadow and border radius */
+    .rounded-4 {
+        border-radius: 1rem !important;
+    }
+
+    .shadow-sm {
+        box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important;
+    }
+
+    /* Fix content spacing */
+    .mb-5 {
+        margin-bottom: 2rem !important;
+    }
+
+    .py-5 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+
+    /* Fix text wrapping */
+    h1, h2, h3, h4, h5, h6, p {
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+
+    /* Fix button and badge alignment */
+    .badge {
+        white-space: normal !important;
+        text-align: center !important;
+    }
+
+    .btn {
+        white-space: normal !important;
+        text-align: center !important;
+    }
+}
+
+/* Tablet adjustments */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    img[src*="corpsloth.png"] {
+        max-width: 90% !important;
+        margin: 0 auto !important;
+    }
+
+    .col-md-6.text-center {
+        padding: 0 2rem !important;
+    }
+}
+
+/* Image container styles */
+.image-container {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 400px !important;
+    margin: 0 auto !important;
+    overflow: hidden !important;
+}
+
+.image-container img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    object-fit: contain !important;
+}
+
+/* Mobile image container adjustments */
+@media (max-width: 767.98px) {
+    .image-container {
+        max-width: 100% !important;
+        padding: 0 1rem !important;
+    }
+
+    .image-container img {
+        border-radius: 1rem !important;
+    }
+}
+
+/* Tablet image container adjustments */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .image-container {
+        max-width: 90% !important;
+    }
+}
+
+/* Testimonial dots fixes */
+.testimonial-dots {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+    margin-top: 1rem !important;
+}
+
+.testimonial-dots button {
+    width: 8px !important;
+    height: 8px !important;
+    min-width: 8px !important;
+    min-height: 8px !important;
+    max-width: 8px !important;
+    max-height: 8px !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 50% !important;
+    background-color: rgba(255, 255, 255, 0.5) !important;
+    transition: background-color 0.2s ease !important;
+}
+
+.testimonial-dots button.active {
+    background-color: #ffffff !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 767.98px) {
+    .testimonial-dots {
+        gap: 0.75rem !important;
+    }
+
+    .testimonial-dots button {
+        width: 6px !important;
+        height: 6px !important;
+        min-width: 6px !important;
+        min-height: 6px !important;
+        max-width: 6px !important;
+        max-height: 6px !important;
+    }
+}
+
+/* Fix checkmark circles in about section */
+.d-flex .rounded-circle[style*="width: 48px"] {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+    max-width: 48px !important;
+    max-height: 48px !important;
+    aspect-ratio: 1 !important;
+    flex-shrink: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Fix SVG checkmark size */
+.d-flex .rounded-circle svg {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
+    max-width: 24px !important;
+    max-height: 24px !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 767.98px) {
+    .d-flex .rounded-circle[style*="width: 48px"] {
+        width: 40px !important;
+        height: 40px !important;
+        min-width: 40px !important;
+        min-height: 40px !important;
+        max-width: 40px !important;
+        max-height: 40px !important;
+    }
+
+    .d-flex .rounded-circle svg {
+        width: 20px !important;
+        height: 20px !important;
+        min-width: 20px !important;
+        min-height: 20px !important;
+        max-width: 20px !important;
+        max-height: 20px !important;
+    }
+}
+
+/* Fix alignment of stat circles */
+.row-cols-2 .col .d-flex {
+    align-items: center !important;
+    height: 100% !important;
+    margin: 0 !important;
+}
+
+.row-cols-2 .col {
+    display: flex !important;
+    align-items: center !important;
+    margin-bottom: 1rem !important;
+}
+
+/* Ensure consistent circle positioning */
+.d-flex .rounded-circle[style*="width: 48px"] {
+    margin: 0 1rem 0 0 !important;
+    position: relative !important;
+    top: 0 !important;
+    transform: none !important;
+}
+
+/* Fix content alignment next to circles */
+.d-flex .rounded-circle + div {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+}
+
+/* Fix text alignment */
+.d-flex .rounded-circle + div h3,
+.d-flex .rounded-circle + div p {
+    margin: 0 !important;
+    line-height: 1.4 !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 767.98px) {
+    .row-cols-2 .col {
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .d-flex .rounded-circle[style*="width: 48px"] {
+        margin: 0 0.75rem 0 0 !important;
+    }
+}
+
+/* Footer content styles */
+footer .text-center img {
+    display: block !important;
+    margin: 0 auto !important;
+    max-width: 200px !important;
+    height: auto !important;
+}
+
+footer hr {
+    margin: 1.5rem auto !important;
+    opacity: 0.1 !important;
+}
+
+footer .small {
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+    max-width: 800px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+@media (max-width: 767.98px) {
+    footer .text-center img {
+        max-width: 150px !important;
+    }
+    
+    footer .small {
+        font-size: 0.8125rem !important;
+        padding: 0 1rem !important;
+    }
+}
+
+/* Footer styles */
+.bg-primary-gradient {
+    background: linear-gradient(180deg, #F8F9FA 0%, #D7D7FF 100%) !important;
+}
+
+footer {
+    margin-top: 0 !important;
+    position: relative !important;
+}
+
+/* Remove unwanted gaps */
+section:last-of-type {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+footer .container {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Text color adjustments */
+footer .text-muted {
+    color: #212529 !important;
+}
+
+footer .footer-links a {
+    color: #212529 !important;
+    transition: color 0.2s ease !important;
+}
+
+footer .footer-links a:hover {
+    color: #000000 !important;
+}
+
+footer hr {
+    border-color: rgba(0, 0, 0, 0.1) !important;
 } 
