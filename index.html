@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Strategic Sloth</title>
+    <title>Home - Brand</title>
     <meta name="description" content="Now Is Your Time. Freedom Is Simpler Than You Imagine.
 
 …and in just a few moments, you'll discover the exact system I used to trade my corner office for a life of creative freedom—without sacrificing income or prestige.
@@ -270,6 +270,22 @@ For over a decade, I designed magic for giants like Disney, Hasbro, and Universa
         .notification-location {
             color: var(--bs-primary);
             font-weight: 600;
+        }
+    </style>
+
+    <!-- Custom Modal Width Styles -->
+    <style>
+        @media (min-width: 992px) {
+            .modal-dialog {
+                max-width: 900px;
+            }
+        }
+        
+        @media (max-width: 991.98px) {
+            .modal-dialog {
+                max-width: 95%;
+                margin: 1.75rem auto;
+            }
         }
     </style>
 </head>
@@ -1731,6 +1747,162 @@ For over a decade, I designed magic for giants like Disney, Hasbro, and Universa
             }
         });
     </script>
+
+    <!-- Legal Document Modals -->
+    <div class="modal fade" id="disclaimerModal" tabindex="-1" aria-labelledby="disclaimerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="disclaimerModalLabel">Disclaimer</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-4">This website and its content are for informational purposes only. The information provided is not intended to be financial, legal, or tax advice. Always consult with a qualified professional before making any financial decisions.</p>
+                    
+                    <p class="mb-4">While we strive to provide accurate and up-to-date information, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of the website or the information, products, services, or related graphics contained on the website.</p>
+                    
+                    <p class="mb-4">Any reliance you place on such information is therefore strictly at your own risk. We shall not be liable for any loss or damage including without limitation, indirect or consequential loss or damage, or any loss or damage whatsoever arising from loss of data or profits arising out of, or in connection with, the use of this website.</p>
+                    
+                    <p class="mb-4">The success stories and testimonials featured on this website are individual results and do not guarantee similar results for others. Your results may vary based on your individual effort, dedication, and external factors.</p>
+                    
+                    <p class="mb-0">By using this website, you agree to these terms and conditions.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="privacyModalLabel">Privacy Policy</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-4">Last updated: January 1, 2025</p>
+                    
+                    <h6 class="fw-bold mb-3">1. Information We Collect</h6>
+                    <p class="mb-3">We collect information that you provide directly to us, including:</p>
+                    <ul class="mb-4">
+                        <li>Name and contact information</li>
+                        <li>Payment information</li>
+                        <li>Account credentials</li>
+                    </ul>
+
+                    <h6 class="fw-bold mb-3">2. How We Use Your Information</h6>
+                    <p class="mb-3">We use the information we collect to:</p>
+                    <ul class="mb-4">
+                        <li>Process your transactions</li>
+                        <li>Send you updates and marketing materials</li>
+                        <li>Improve our services</li>
+                    </ul>
+
+                    <h6 class="fw-bold mb-3">3. Information Sharing</h6>
+                    <p class="mb-4">We do not sell your personal information. We may share your information with:</p>
+                    <ul class="mb-4">
+                        <li>Service providers</li>
+                        <li>Legal authorities when required</li>
+                        <li>Business partners with your consent</li>
+                    </ul>
+
+                    <h6 class="fw-bold mb-3">4. Your Rights</h6>
+                    <p class="mb-3">You have the right to:</p>
+                    <ul class="mb-4">
+                        <li>Access your personal data</li>
+                        <li>Correct inaccurate data</li>
+                        <li>Request deletion of your data</li>
+                        <li>Opt-out of marketing communications</li>
+                    </ul>
+
+                    <h6 class="fw-bold mb-3">5. Data Security</h6>
+                    <p class="mb-4">We implement appropriate security measures to protect your personal information. However, no method of transmission over the internet is 100% secure.</p>
+
+                    <h6 class="fw-bold mb-3">6. Contact Us</h6>
+                    <p class="mb-0">If you have any questions about this Privacy Policy, please contact us at privacy@strategicsloth.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="termsModalLabel">Terms of Use</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-4">Last updated: January 1, 2025</p>
+
+                    <h6 class="fw-bold mb-3">1. Agreement to Terms</h6>
+                    <p class="mb-4">By accessing and using this website, you agree to be bound by these Terms of Use and all applicable laws and regulations.</p>
+
+                    <h6 class="fw-bold mb-3">2. Intellectual Property Rights</h6>
+                    <p class="mb-4">The content on this website, including text, graphics, logos, and software, is the property of Strategic Sloth LLC and is protected by copyright laws.</p>
+
+                    <h6 class="fw-bold mb-3">3. User Conduct</h6>
+                    <p class="mb-3">You agree not to:</p>
+                    <ul class="mb-4">
+                        <li>Use the materials for any commercial purpose</li>
+                        <li>Attempt to decompile or reverse engineer any software</li>
+                        <li>Remove any copyright or other proprietary notations</li>
+                        <li>Transfer the materials to another person</li>
+                    </ul>
+
+                    <h6 class="fw-bold mb-3">4. Disclaimer</h6>
+                    <p class="mb-4">The materials on Strategic Sloth's website are provided on an 'as is' basis. Strategic Sloth makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
+
+                    <h6 class="fw-bold mb-3">5. Limitations</h6>
+                    <p class="mb-0">In no event shall Strategic Sloth or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on Strategic Sloth's website.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cookieModalLabel">Cookie Policy</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-4">Last updated: January 1, 2025</p>
+
+                    <h6 class="fw-bold mb-3">What Are Cookies</h6>
+                    <p class="mb-4">Cookies are small text files that are placed on your computer or mobile device when you visit our website. They help us provide you with a better experience and enable certain features to function properly.</p>
+
+                    <h6 class="fw-bold mb-3">How We Use Cookies</h6>
+                    <p class="mb-3">We use cookies to:</p>
+                    <ul class="mb-4">
+                        <li>Remember your preferences</li>
+                        <li>Analyze how you use our website</li>
+                        <li>Improve our services</li>
+                        <li>Provide personalized content</li>
+                    </ul>
+
+                    <h6 class="fw-bold mb-3">Types of Cookies We Use</h6>
+                    <ul class="mb-4">
+                        <li>Essential cookies for website functionality</li>
+                        <li>Analytics cookies to understand usage</li>
+                        <li>Preference cookies to remember your settings</li>
+                        <li>Marketing cookies for targeted advertising</li>
+                    </ul>
+
+                    <h6 class="fw-bold mb-3">Managing Cookies</h6>
+                    <p class="mb-4">You can control and/or delete cookies as you wish. You can delete all cookies that are already on your computer and you can set most browsers to prevent them from being placed.</p>
+
+                    <h6 class="fw-bold mb-3">Contact Us</h6>
+                    <p class="mb-0">If you have any questions about our Cookie Policy, please contact us at privacy@strategicsloth.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/bold-and-dark.js"></script>
+    <script src="assets/js/countdown.js"></script>
 </body>
 
 </html>
