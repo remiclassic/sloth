@@ -320,6 +320,107 @@ For over a decade, I designed magic for giants like Disney, Hasbro, and Universa
             }
         }
     </style>
+
+    <style>
+        /* Mobile Hero Button Styles */
+        @media (max-width: 767.98px) {
+            .d-flex.gap-3.mb-3 {
+                display: flex !important;
+                flex-direction: column !important;
+                width: 100% !important;
+                gap: 1rem !important;
+            }
+
+            .d-flex.gap-3.mb-3 .btn {
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 0.875rem 1.5rem !important;
+                font-size: 1rem !important;
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                border-radius: 0.5rem !important;
+            }
+
+            .d-flex.gap-3.mb-3 .btn-light {
+                background: var(--bs-primary) !important;
+                color: white !important;
+                border: none !important;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+            }
+
+            .d-flex.gap-3.mb-3 .btn-outline-light {
+                background: transparent !important;
+                color: white !important;
+                border: 2px solid rgba(255, 255, 255, 0.9) !important;
+            }
+        }
+    </style>
+
+    <style>
+        /* Navbar Dropdown Fix */
+        #mainNav #navcol-1.navbar-collapse {
+            display: none;
+        }
+
+        #mainNav #navcol-1.navbar-collapse.show {
+            display: block !important;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border-radius: 0.5rem;
+            margin-top: 0.5rem;
+            z-index: 1030;
+        }
+
+        #mainNav #navcol-1.navbar-collapse.show .navbar-nav {
+            flex-direction: column;
+            gap: 0;
+            width: 100%;
+        }
+
+        #mainNav #navcol-1.navbar-collapse.show .nav-link {
+            padding: 0.75rem 1rem;
+            text-align: center;
+        }
+
+        #mainNav #navcol-1.navbar-collapse.show .btn-primary {
+            margin: 1rem auto 0;
+            display: block;
+            text-align: center;
+        }
+
+        @media (min-width: 1200px) {
+            #mainNav #navcol-1.navbar-collapse {
+                display: flex !important;
+                position: static;
+                background: none;
+                box-shadow: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            #mainNav #navcol-1.navbar-collapse .navbar-nav {
+                flex-direction: row;
+                justify-content: center;
+                margin: 0 auto;
+                gap: 0.5rem;
+            }
+
+            #mainNav #navcol-1.navbar-collapse .nav-link {
+                padding: 0.5rem 1rem;
+            }
+
+            #mainNav #navcol-1.navbar-collapse .btn-primary {
+                margin-left: 1rem;
+                margin-top: 0;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -1935,6 +2036,44 @@ For over a decade, I designed magic for giants like Disney, Hasbro, and Universa
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/bold-and-dark.js"></script>
     <script src="assets/js/countdown.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the navbar elements
+            const navbar = document.getElementById('mainNav');
+            const navbarCollapse = document.getElementById('navcol-1');
+            const navbarToggler = document.querySelector('.navbar-toggler');
+
+            // Function to close the navbar
+            function closeNavbar() {
+                if (navbarCollapse.classList.contains('show')) {
+                    navbarCollapse.classList.remove('show');
+                }
+            }
+
+            // Close navbar when clicking outside
+            document.addEventListener('click', function(event) {
+                const isClickInside = navbar.contains(event.target);
+                
+                // If the click is outside the navbar and the navbar is expanded
+                if (!isClickInside && navbarCollapse.classList.contains('show')) {
+                    closeNavbar();
+                }
+            });
+
+            // Prevent clicks inside navbar from bubbling to document
+            navbar.addEventListener('click', function(event) {
+                event.stopPropagation();
+            });
+
+            // Handle escape key press
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && navbarCollapse.classList.contains('show')) {
+                    closeNavbar();
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

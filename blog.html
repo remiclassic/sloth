@@ -2561,6 +2561,44 @@
             });
         });
     </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the navbar elements
+            const navbar = document.getElementById('mainNav');
+            const navbarCollapse = document.getElementById('navcol-1');
+            const navbarToggler = document.querySelector('.navbar-toggler');
+
+            // Function to close the navbar
+            function closeNavbar() {
+                if (navbarCollapse.classList.contains('show')) {
+                    navbarCollapse.classList.remove('show');
+                }
+            }
+
+            // Close navbar when clicking outside
+            document.addEventListener('click', function(event) {
+                const isClickInside = navbar.contains(event.target);
+                
+                // If the click is outside the navbar and the navbar is expanded
+                if (!isClickInside && navbarCollapse.classList.contains('show')) {
+                    closeNavbar();
+                }
+            });
+
+            // Prevent clicks inside navbar from bubbling to document
+            navbar.addEventListener('click', function(event) {
+                event.stopPropagation();
+            });
+
+            // Handle escape key press
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && navbarCollapse.classList.contains('show')) {
+                    closeNavbar();
+                }
+            });
+        });
+    </script>
 </body>
 
 </html> 
