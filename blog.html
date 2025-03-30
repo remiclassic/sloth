@@ -1021,6 +1021,216 @@
             }
         }
     </style>
+
+    <style>
+        /* Article-specific styles */
+        .article-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+            opacity: 0;
+        }
+
+        .article-content.show {
+            max-height: 5000px;
+            opacity: 1;
+            transition: max-height 0.5s ease-in, opacity 0.5s ease-in;
+        }
+
+        /* Article Tools and Footer */
+        .article-footer {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .article-image-container {
+            cursor: pointer;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bs-primary);
+            color: white;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            color: white;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+        }
+
+        /* Article Footer */
+        .article-footer {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
+    <style>
+        /* Blog Header Styles */
+        .blog-header {
+            padding: 8rem 0 4rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .blog-header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('assets/images/blog/i-need-an-image-that-represents-sloth-wisdom-strat.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+            z-index: 1;
+        }
+
+        .blog-header:hover .blog-header-bg {
+            transform: scale(1.15);
+        }
+
+        .blog-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.7) 0%, rgba(52, 152, 219, 0.7) 100%);
+            z-index: 2;
+        }
+
+        .blog-header .container {
+            position: relative;
+            z-index: 3;
+        }
+
+        .blog-header .badge {
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .blog-header h1 {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .blog-header .lead {
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .blog-header {
+                padding: 6rem 0 3rem;
+            }
+        }
+    </style>
+
+    <style>
+        /* Social Proof Notification Mobile Positioning */
+        @media (max-width: 991.98px) {
+            .social-proof-notification {
+                bottom: auto !important;
+                top: 70px !important;
+                left: 0 !important;
+                right: 0 !important;
+                width: 100% !important;
+            }
+
+            .social-proof-notification .notification-content {
+                max-width: 100% !important;
+                width: 100% !important;
+                padding: 5px !important;
+                font-size: 0.875rem !important;
+                border-radius: 0 !important;
+                line-height: 1.2 !important;
+            }
+        }
+
+        /* Desktop Positioning */
+        @media (min-width: 992px) {
+            .social-proof-notification {
+                bottom: 20px;
+                left: 20px;
+                max-width: 320px;
+            }
+
+            .social-proof-notification .notification-content {
+                border-radius: 8px;
+                padding: 5px;
+                font-size: 0.875rem;
+                line-height: 1.2;
+            }
+        }
+
+        .social-proof-notification {
+            position: fixed;
+            z-index: 1020;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: all 0.3s ease;
+        }
+
+        .social-proof-notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .social-proof-notification .notification-content {
+            background: white;
+            display: flex;
+            align-items: center;
+        }
+
+        .social-proof-notification .notification-text {
+            margin: 0;
+            color: #1a1a1a;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .notification-location {
+            color: var(--bs-primary);
+            font-weight: 600;
+        }
+    </style>
 </head>
 
 <body>
@@ -1079,8 +1289,9 @@
     </div>
 
     <!-- Blog Header -->
-    <header class="blog-header">
-        <div class="container">
+    <header class="blog-header position-relative">
+        <div class="blog-header-bg"></div>
+        <div class="container position-relative">
             <div class="row justify-content-center">
                 <div class="col-md-8 col-xl-6 text-center">
                     <div class="mb-4 pt-4">
@@ -1089,12 +1300,12 @@
                             SLOTH WISDOM
                         </span>
                     </div>
-                    <h1 class="display-5 fw-bold mb-4 position-relative">
+                    <h1 class="display-5 fw-bold mb-4 position-relative text-white">
                         Strategic Laziness Blog
-                        <span class="position-absolute" style="bottom: -10px; left: 50%; transform: translateX(-50%); width: 150px; height: 2px; background: linear-gradient(90deg, transparent, rgba(104, 109, 224, 0.5), transparent);"></span>
+                        <span class="position-absolute" style="bottom: -10px; left: 50%; transform: translateX(-50%); width: 150px; height: 2px; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);"></span>
                     </h1>
-                    <p class="lead text-muted mb-4" style="font-size: 1.25rem; line-height: 1.6;">
-                        Turn minimal effort into <span class="text-primary fw-semibold">maximum income</span> with our proven strategies.
+                    <p class="lead mb-4 text-white" style="font-size: 1.25rem; line-height: 1.6;">
+                        Turn minimal effort into <span class="text-warning fw-semibold">maximum income</span> with our proven strategies.
                     </p>
                 </div>
             </div>
@@ -2142,14 +2353,72 @@
         });
     </script>
 
-    <!-- Mobile CTA HTML -->
+    <!-- Mobile CTA -->
     <div class="mobile-cta">
         <div class="container">
-            <a class="btn btn-primary btn-lg w-100 shadow-lg" role="button" href="index.html#pricing">
+            <a class="btn btn-primary btn-lg w-100 shadow-lg" role="button" href="#pricing">
                 Get Started Now →
             </a>
         </div>
     </div>
+
+    <style>
+        /* Mobile CTA */
+        .mobile-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 0.5rem 0.375rem;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            z-index: 1025;
+            display: none;
+            transition: all 0.3s ease;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .mobile-cta .container {
+            padding: 0;
+            max-width: 540px;
+        }
+
+        .mobile-cta .btn {
+            font-weight: 600;
+            padding: 0.375rem 0.75rem;
+            font-size: 0.8rem;
+            border-radius: 0.5rem;
+            background: linear-gradient(135deg, var(--bs-primary), #6366f1);
+            border: none;
+            box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-cta .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px -1px rgba(79, 70, 229, 0.3);
+        }
+
+        @media (max-width: 991.98px) {
+            .mobile-cta {
+                display: block;
+                transform: translateY(0);
+            }
+            
+            .mobile-cta.hidden {
+                transform: translateY(100%);
+            }
+
+            /* Add padding to prevent content from being hidden behind CTA */
+            body {
+                padding-bottom: calc(0.5rem * 2 + 35px); /* Adjusted for smaller CTA */
+            }
+            
+            .back-to-top {
+                bottom: calc(0.5rem * 2 + 35px); /* Adjusted for smaller CTA */
+            }
+        }
+    </style>
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
@@ -2197,6 +2466,82 @@
                 }
                 
                 lastScroll = currentScroll;
+            });
+        });
+    </script>
+
+    <!-- Article-specific functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all articles and read more links using very specific selectors
+            const articles = document.querySelectorAll('.blog-articles .article-content');
+            const readMoreLinks = document.querySelectorAll('.blog-articles .read-more');
+            
+            // Function to handle article expansion
+            function expandArticle(article, readMoreBtn) {
+                // Close all other articles first
+                articles.forEach(otherArticle => {
+                    if (otherArticle !== article) {
+                        otherArticle.classList.remove('show');
+                        const otherLink = otherArticle.closest('article').querySelector('.read-more');
+                        if (otherLink) otherLink.textContent = 'Read More';
+                    }
+                });
+                
+                // Force open clicked article
+                article.style.maxHeight = '5000px';
+                article.style.opacity = '1';
+                article.classList.add('show');
+                if (readMoreBtn) readMoreBtn.textContent = 'Close';
+            }
+
+            // Handle Read More/Close clicks
+            readMoreLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const article = this.closest('article').querySelector('.article-content');
+                    const isExpanded = article.classList.contains('show');
+                    
+                    if (isExpanded) {
+                        article.classList.remove('show');
+                        this.textContent = 'Read More';
+                    } else {
+                        expandArticle(article, this);
+                    }
+                });
+            });
+
+            // Handle article image clicks
+            document.querySelectorAll('.article-image-container img').forEach(img => {
+                img.addEventListener('click', function() {
+                    const article = this.closest('article').querySelector('.article-content');
+                    const readMoreBtn = this.closest('article').querySelector('.read-more');
+                    if (article) {
+                        expandArticle(article, readMoreBtn);
+                    }
+                });
+            });
+
+            // Handle Table of Contents clicks
+            document.querySelectorAll('.toc-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetArticle = document.getElementById(targetId);
+                    
+                    if (targetArticle) {
+                        // Scroll to article
+                        targetArticle.scrollIntoView({ behavior: 'smooth' });
+                        
+                        // Force expand the article content
+                        const content = targetArticle.querySelector('.article-content');
+                        const readMore = targetArticle.querySelector('.read-more');
+                        if (content) {
+                            expandArticle(content, readMore);
+                        }
+                    }
+                });
             });
         });
     </script>
