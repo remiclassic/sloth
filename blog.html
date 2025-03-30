@@ -1323,6 +1323,109 @@
             }
         }
     </style>
+
+    <!-- Add this after the existing styles -->
+    <style>
+        /* Enhanced Blog Article Layout */
+        .blog-articles {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .blog-card {
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .article-content {
+            max-width: 100%;
+        }
+
+        .article-content p,
+        .article-content ul,
+        .article-content ol {
+            max-width: 100%;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 991.98px) {
+            .blog-articles {
+                padding: 0 1rem;
+            }
+
+            .card-body {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .blog-articles {
+                padding: 0 0.5rem;
+            }
+
+            .card-body {
+                padding: 1.25rem;
+            }
+
+            .article-content {
+                padding: 0;
+            }
+
+            .article-content p,
+            .article-content ul,
+            .article-content ol {
+                padding-right: 0;
+                padding-left: 0;
+            }
+
+            .bg-light,
+            .bg-primary {
+                padding: 1rem !important;
+                margin: 1rem 0 !important;
+            }
+        }
+
+        /* Improved Article Spacing */
+        .article-content h2,
+        .article-content h3,
+        .article-content h4 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-content p,
+        .article-content ul,
+        .article-content ol {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .article-content li {
+            margin-bottom: 0.75rem;
+        }
+
+        /* Container Width Control */
+        .container.py-4 {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        /* Image Responsiveness */
+        .article-image {
+            width: 100%;
+            height: auto;
+            max-height: 300px;
+            object-fit: cover;
+        }
+    </style>
 </head>
 
 <body>
@@ -2448,7 +2551,7 @@
     <!-- Mobile CTA -->
     <div class="mobile-cta">
         <div class="container">
-            <a class="btn btn-primary btn-lg w-100 shadow-lg" role="button" href="#pricing">
+            <a class="btn btn-primary btn-lg w-100 shadow-lg" role="button" href="index.html#pricing">
                 Get Started Now →
             </a>
         </div>
