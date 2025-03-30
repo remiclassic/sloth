@@ -902,6 +902,15 @@
                 width: fit-content;
             }
         }
+
+        /* Mobile CTA styles */
+        .mobile-cta {
+            transition: transform 0.3s ease-in-out !important;
+        }
+
+        .mobile-cta.hidden {
+            transform: translateY(100%) !important;
+        }
     </style>
 
     <!-- Article text color fix -->
@@ -2145,96 +2154,49 @@
     <!-- Bootstrap Bundle with Popper -->
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
-    <script src="assets/js/blog.js"></script>
+    <script src="assets/js/bold-and-dark.js"></script>
 
-    <!-- Article Functionality -->
+    <!-- Mobile menu auto-close script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Mobile CTA scroll behavior
+            // Get all nav links
+            const navLinks = document.querySelectorAll('#mainNav .nav-link');
+            // Get the navbar collapse element
+            const navbarCollapse = document.querySelector('#navcol-1');
+            
+            // Add click handler to each nav link
+            navLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    // Check if the navbar is expanded (has show class)
+                    if (navbarCollapse.classList.contains('show')) {
+                        // Remove the show class to collapse it
+                        navbarCollapse.classList.remove('show');
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- Mobile CTA scroll behavior -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
             const mobileCta = document.querySelector('.mobile-cta');
             let lastScroll = window.scrollY;
-            
+            const scrollThreshold = 200; // Start hiding after 200px of scroll
+
             window.addEventListener('scroll', () => {
                 const currentScroll = window.scrollY;
-                if (currentScroll > lastScroll && currentScroll > 200) {
+                
+                // Show/hide based on scroll direction and threshold
+                if (currentScroll > lastScroll && currentScroll > scrollThreshold) {
+                    // Scrolling down & past threshold - hide CTA
                     mobileCta.classList.add('hidden');
                 } else {
+                    // Scrolling up or near top - show CTA
                     mobileCta.classList.remove('hidden');
                 }
+                
                 lastScroll = currentScroll;
-            });
-
-            // Get all articles and read more links
-            const articles = document.querySelectorAll('.article-content');
-            const readMoreLinks = document.querySelectorAll('.read-more');
-            
-            // Handle Read More/Close clicks
-            readMoreLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const article = this.closest('article').querySelector('.article-content');
-                    const isShown = article.classList.contains('show');
-                    
-                    // Close other open articles first
-                    articles.forEach(otherArticle => {
-                        if (otherArticle !== article && bootstrap.Collapse.getInstance(otherArticle)) {
-                            bootstrap.Collapse.getInstance(otherArticle).hide();
-                        }
-                    });
-
-                    // Toggle the clicked article
-                    const collapse = bootstrap.Collapse.getInstance(article) || new bootstrap.Collapse(article, {
-                        toggle: false
-                    });
-                    
-                    if (isShown) {
-                        collapse.hide();
-                    } else {
-                        collapse.show();
-                    }
-                });
-            });
-
-            // Handle article transitions
-            articles.forEach(article => {
-                article.addEventListener('show.bs.collapse', function() {
-                    // Update read more text
-                    const readMore = this.closest('article').querySelector('.read-more');
-                    readMore.textContent = 'Close';
-                });
-
-                article.addEventListener('hide.bs.collapse', function() {
-                    // Update read more text
-                    const readMore = this.closest('article').querySelector('.read-more');
-                    readMore.textContent = 'Read More';
-                });
-            });
-
-            // Handle Table of Contents clicks
-            document.querySelectorAll('.toc-link').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href').substring(1);
-                    const targetArticle = document.getElementById(targetId);
-                    
-                if (targetArticle) {
-                        // First scroll to the article
-                        targetArticle.scrollIntoView({ behavior: 'smooth' });
-                        
-                        // Then immediately show the article
-                        const collapse = bootstrap.Collapse.getOrCreateInstance(targetArticle);
-                        
-                        // Close other articles first
-                        articles.forEach(article => {
-                            if (article !== targetArticle && bootstrap.Collapse.getInstance(article)) {
-                                bootstrap.Collapse.getInstance(article).hide();
-                            }
-                        });
-                        
-                        // Show the target article
-                        collapse.show();
-                    }
-                });
             });
         });
     </script>

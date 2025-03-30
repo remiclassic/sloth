@@ -25,6 +25,44 @@ For over a decade, I designed magic for giants like Disney, Hasbro, and Universa
             background-color: #ffffff !important;
             color: #212529 !important;
         }
+
+        /* Mobile CTA styles */
+        .mobile-cta {
+            transition: transform 0.3s ease-in-out !important;
+        }
+
+        .mobile-cta.hidden {
+            transform: translateY(100%) !important;
+        }
+
+        /* Mobile image and CTA fixes */
+        @media (max-width: 1199.98px) {
+            .hero-image {
+                max-width: 100% !important;
+                width: 100% !important;
+                height: auto !important;
+                object-fit: contain !important;
+            }
+
+            .book-animation-wrapper {
+                max-width: 100% !important;
+                overflow: hidden !important;
+            }
+        }
+
+        .mobile-cta {
+            background: white !important;
+            padding: 1rem !important;
+            z-index: 1029 !important;
+        }
+
+        .mobile-cta .container {
+            padding: 0 !important;
+        }
+
+        .mobile-cta .btn {
+            margin: 0 !important;
+        }
     </style>
     
     <!-- Index-specific navbar overrides -->
@@ -231,13 +269,10 @@ For over a decade, I designed magic for giants like Disney, Hasbro, and Universa
     <!-- Mobile Sticky CTA -->
     <div class="d-md-none position-fixed bottom-0 start-0 w-100 mobile-cta">
         <div class="container">
-            <div class="bg-white rounded-4 shadow-sm p-3">
-                <!-- CTA Button with Badge -->
-                <a href="#pricing" class="btn btn-primary w-100 fw-bold d-flex align-items-center justify-content-center gap-2">
-                    <span class="badge bg-warning text-dark">LIMITED-TIME OFFER</span>
-                    <span>Claim Your Copy Now →</span>
-                </a>
-            </div>
+            <a href="#pricing" class="btn btn-primary w-100 fw-bold d-flex align-items-center justify-content-center gap-2 shadow-sm">
+                <span class="badge bg-warning text-dark">LIMITED-TIME OFFER</span>
+                <span>Claim Your Copy Now →</span>
+            </a>
         </div>
     </div>
 
@@ -1254,407 +1289,120 @@ For over a decade, I designed magic for giants like Disney, Hasbro, and Universa
     </script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
-    <script src="assets/js/bold-and-bright.js"></script>
-    <script src="assets/js/countdown.js"></script>
+    <script src="assets/js/bold-and-dark.js"></script>
 
-    <!-- Modal Initialization -->
+    <!-- Mobile menu auto-close script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize all modals
-            const modals = document.querySelectorAll('.modal');
-            modals.forEach(modal => {
-                const bsModal = new bootstrap.Modal(modal, {
-                    backdrop: true,
-                    keyboard: true
-                });
-
-                // Add event listener for hidden.bs.modal
-                modal.addEventListener('hidden.bs.modal', function () {
-                    // Remove any lingering backdrop
-                    const backdrop = document.querySelector('.modal-backdrop');
-                    if (backdrop) {
-                        backdrop.remove();
-                    }
-                    // Remove modal-open class from body
-                    document.body.classList.remove('modal-open');
-                    // Reset body padding
-                    document.body.style.paddingRight = '';
-                });
-            });
-
-            // Add click handlers for modal triggers
-            const modalTriggers = document.querySelectorAll('[data-bs-toggle="modal"]');
-            modalTriggers.forEach(trigger => {
-                trigger.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('data-bs-target');
-                    const modal = document.querySelector(targetId);
-                    if (modal) {
-                        const bsModal = bootstrap.Modal.getInstance(modal) || new bootstrap.Modal(modal);
-                        bsModal.show();
+            // Get all nav links
+            const navLinks = document.querySelectorAll('#mainNav .nav-link');
+            // Get the navbar collapse element
+            const navbarCollapse = document.querySelector('#navcol-1');
+            
+            // Add click handler to each nav link
+            navLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    // Check if the navbar is expanded (has show class)
+                    if (navbarCollapse.classList.contains('show')) {
+                        // Remove the show class to collapse it
+                        navbarCollapse.classList.remove('show');
                     }
                 });
             });
         });
     </script>
 
-    <!-- Exit Intent Popup Script -->
+    <!-- Mobile CTA scroll behavior -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const popup = document.getElementById('exit-popup');
-            const closeBtn = document.querySelector('.close-popup');
-            const form = document.getElementById('exit-form');
-            
-            // Check if not mobile device
-            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-            
-            // Show popup when mouse leaves the viewport
-            document.addEventListener('mouseleave', function(e) {
-                if (e.clientY < 0 && !isMobile) {
-                    popup.style.display = 'block';
-                }
-            });
+            const mobileCta = document.querySelector('.mobile-cta');
+            let lastScroll = window.scrollY;
+            const scrollThreshold = 200; // Start hiding after 200px of scroll
 
-            // Close popup when clicking close button
-            closeBtn.addEventListener('click', function() {
-                popup.style.display = 'none';
-            });
-
-            // Close popup when clicking outside
-            popup.addEventListener('click', function(e) {
-                if (e.target === popup) {
-                    popup.style.display = 'none';
-                }
-            });
-
-            // Handle form submission
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const email = form.querySelector('input[type="email"]').value;
-                // Add your email capture logic here
-                popup.style.display = 'none';
-                alert('Thank you for subscribing! Your free guide will be sent to your email shortly.');
-            });
-        });
-    </script>
-
-    <!-- Legal Document Modals -->
-    <div class="modal fade" id="disclaimerModal" tabindex="-1" aria-labelledby="disclaimerModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="disclaimerModalLabel">Disclaimer</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p class="mb-4">Last Updated: March 1, 2025</p>
-                    
-                    <h6 class="fw-bold mb-3">1. No Guaranteed Results</h6>
-                    <p class="mb-4">Testimonials, case studies, and examples on this site are illustrative and exceptional. They do not guarantee or predict your individual results. Your success depends on factors including but not limited to: effort, market conditions, niche selection, and execution. Past performance ≠ future results.</p>
-
-                    <h6 class="fw-bold mb-3">2. Not Professional Advice</h6>
-                    <p class="mb-4">All content (free or paid) is for informational purposes only. It is not financial, legal, tax, or business advice. Consult licensed professionals before making decisions.</p>
-
-                    <h6 class="fw-bold mb-3">3. No Warranties</h6>
-                    <p class="mb-4">Strategic Sloth LLC disclaims all warranties—express or implied—including fitness for a particular purpose or non-infringement. We do not guarantee uninterrupted, error-free, or secure access to our materials.</p>
-
-                    <h6 class="fw-bold mb-3">4. Limitation of Liability</h6>
-                    <p class="mb-3">To the fullest extent permitted by law, Strategic Sloth LLC and its affiliates are not liable for:</p>
-                    <ul class="mb-4">
-                        <li>Direct, indirect, incidental, or consequential damages.</li>
-                        <li>Loss of profits, data, or business opportunities.</li>
-                        <li>Third-party actions (e.g., payment processors, software tools).</li>
-                    </ul>
-
-                    <h6 class="fw-bold mb-3">5. Arbitration & Jurisdiction</h6>
-                    <p class="mb-2">Binding Arbitration: Any disputes must be resolved through confidential arbitration under the ICC Rules in Singapore (or substitute: "a mutually agreed neutral location").</p>
-                    <p class="mb-2">Class Action Waiver: Claims must proceed individually—no class or representative actions.</p>
-                    <p class="mb-4">Governing Law: This agreement is governed by the laws of Singapore (or another arbitration-friendly jurisdiction).</p>
-
-                    <h6 class="fw-bold mb-3">6. Digital Product Terms</h6>
-                    <p class="mb-2">All sales are final except as outlined in our 30-Day Money-Back Guarantee (see Terms of Service).</p>
-                    <p class="mb-4">Due to the digital nature of our products, refunds are discretionary after the guarantee period.</p>
-
-                    <h6 class="fw-bold mb-3">7. Affiliate Transparency</h6>
-                    <p class="mb-4">We may earn commissions from third-party links (tools, software, etc.). We only recommend products we use or trust. Perform independent due diligence before purchasing.</p>
-
-                    <h6 class="fw-bold mb-3">8. Testimonial Disclaimer</h6>
-                    <p class="mb-4">Success stories reflect individual experiences. Results are atypical and require effort. Claims are verified but not audited.</p>
-
-                    <h6 class="fw-bold mb-3">9. Assumption of Risk</h6>
-                    <p class="mb-4">You voluntarily assume all risks associated with using our strategies, including financial loss.</p>
-
-                    <h6 class="fw-bold mb-3">10. Updates & Amendments</h6>
-                    <p class="mb-4">We reserve the right to modify this disclaimer at any time. Continued use of our site/products constitutes acceptance.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="privacyModalLabel">Privacy Policy</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p class="mb-4">Last Updated: March 1, 2025</p>
-                    <p>Strategic Sloth LLC ("we," "our," or "us") operates strategicsloth.com. This policy explains how we handle your data—because privacy matters, even for digital nomads.</p>
-
-                    <h6 class="fw-bold mb-3">1. What We Collect</h6>
-                    <p class="fw-bold mb-2">A. Data You Provide</p>
-                    <ul class="mb-3">
-                        <li>Purchases: Name, billing address, payment info (processed securely via Stripe/PayPal—we never see your card details).</li>
-                        <li>Surveys/Testimonials: Feedback or success stories you submit.</li>
-                    </ul>
-                    <p class="fw-bold mb-2">B. Automated Data</p>
-                    <ul class="mb-4">
-                        <li>Cookies: Basic site functionality (e.g., login sessions) and analytics (Google Analytics).</li>
-                        <li>IP Address/Location: To prevent fraud and comply with tax laws.</li>
-                    </ul>
-
-                    <h6 class="fw-bold mb-3">2. How We Use Data</h6>
-                    <ul class="mb-4">
-                        <li>Orders: Process payments and deliver digital products.</li>
-                        <li>Improvements: Analyze site traffic to fix bugs or optimize content.</li>
-                        <li>Legal Compliance: Meet tax/legal requirements (e.g., VAT).</li>
-                    </ul>
-
-                    <h6 class="fw-bold mb-3">3. What We Don't Do</h6>
-                    <ul class="mb-4">
-                        <li>No Email Marketing: We don't collect emails for newsletters (since we don't run them yet).</li>
-                        <li>No Data Selling: Never. Not even to "partners."</li>
-                    </ul>
-
-                    <h6 class="fw-bold mb-3">4. Third-Party Sharing</h6>
-                    <p class="mb-3">Limited to:</p>
-                    <ul class="mb-4">
-                        <li>Payment Processors: Stripe, PayPal (they handle your payment data).</li>
-                        <li>Analytics: Google Analytics (anonymous usage stats).</li>
-                        <li>Legal Obligations: If required by law (e.g., court orders).</li>
-                    </ul>
-
-                    <h6 class="fw-bold mb-3">5. Cookies</h6>
-                    <ul class="mb-4">
-                        <li>Essential: Needed for checkout and logins.</li>
-                        <li>Optional: Analytics cookies (disable via browser settings).</li>
-                    </ul>
-
-                    <h6 class="fw-bold mb-3">6. Data Security</h6>
-                    <ul class="mb-4">
-                        <li>Encryption: SSL/TLS secured site (🔒 in your browser bar).</li>
-                        <li>Minimal Storage: We delete unnecessary data ASAP.</li>
-                    </ul>
-
-                    <h6 class="fw-bold mb-3">7. Your Rights</h6>
-                    <ul class="mb-4">
-                        <li>Access/Delete: Email support@strategicsloth.com to request your data.</li>
-                        <li>Opt Out: Disable cookies or use incognito mode.</li>
-                        <li class="text-muted">(Note: Since we don't store emails, requests must come via your purchase receipt or contact form.)</li>
-                    </ul>
-
-                    <h6 class="fw-bold mb-3">8. Global Nomad Notes</h6>
-                    <ul class="mb-4">
-                        <li>Data Transfers: Our tools (e.g., Stripe) may process data globally under GDPR safeguards.</li>
-                        <li>No Kids: Under 16? Don't use this site.</li>
-                    </ul>
-
-                    <h6 class="fw-bold mb-3">9. Changes & Contact</h6>
-                    <ul class="mb-4">
-                        <li>Updates: Check this page periodically—we'll note changes at the top.</li>
-                        <li>Questions? Contact support@strategicsloth.com.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="termsModalLabel">Terms of Use</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p class="mb-4">Last Updated: March 1, 2025</p>
-                    <p>By using strategicsloth.com (the "Site") or purchasing our digital products, you agree to these Terms. If you don't agree, don't use the Site.</p>
-
-                    <h6 class="fw-bold mb-3">1. Who We Are</h6>
-                    <p class="mb-4">Strategic Sloth LLC ("we," "us") provides digital products (e-books, courses, templates) to help entrepreneurs build passive income.</p>
-                    <p class="mb-4">No fixed HQ: We operate remotely.</p>
-
-                    <h6 class="fw-bold mb-3">2. What You're Buying</h6>
-                    <ul class="mb-4">
-                        <li>Digital Products: Immediate-access PDFs, guides, or online courses.</li>
-                        <li>What You Get: A non-exclusive, non-transferable license to use the product for personal/business use.</li>
-                        <li>What You Don't Get: Rights to resell, redistribute, or claim as your own (see Section 6).</li>
-                    </ul>
-
-                    <h6 class="fw-bold mb-3">3. Payments & Refunds</h6>
-                    <ul class="mb-4">
-                        <li>Pricing: Listed in USD/EUR. Taxes (VAT, GST) added where required.</li>
-                        <li>30-Day Guarantee: Email support@strategicsloth.com for refunds within 30 days of purchase. No questions asked.</li>
-                        <li>Chargebacks: Disputes must be resolved with us first. Unauthorized chargebacks = banned access.</li>
-                    </ul>
-
-                    <h6 class="fw-bold mb-3">4. Your Responsibilities</h6>
-                    <ul class="mb-4">
-                        <li>Accurate Info: Provide correct billing/payment details.</li>
-                        <li>No Fraud: Don't share logins, copy products, or abuse refunds.</li>
-                        <li>Legal Use: Don't use our strategies for illegal purposes (e.g., tax evasion).</li>
-                    </ul>
-
-                    <h6 class="fw-bold mb-3">5. Disclaimers (Important!)</h6>
-                    <ul class="mb-4">
-                        <li>No Guarantees: Results vary—we don't promise you'll make €100K.</li>
-                        <li>Not Professional Advice: Our content is informational, not financial/legal advice. Consult experts.</li>
-                        <li>Third-Party Links: We're not responsible for external sites (e.g., Stripe, PayPal).</li>
-                    </ul>
-
-                    <h6 class="fw-bold mb-3">6. Intellectual Property</h6>
-                    <ul class="mb-4">
-                        <li>Our Stuff: All Site content (text, graphics, products) is owned by us or licensed.</li>
-                        <li>Your Stuff: Testimonials you submit grant us usage rights (e.g., marketing).</li>
-                        <li>No Stealing: Reverse-engineering, copying, or reselling our products = legal action.</li>
-                    </ul>
-
-                    <h6 class="fw-bold mb-3">7. Termination</h6>
-                    <p class="mb-3">We can ban you (no refunds) if you:</p>
-                    <ul class="mb-4">
-                        <li>Violate these Terms.</li>
-                        <li>Harm our community (e.g., spam, harassment).</li>
-                    </ul>
-
-                    <h6 class="fw-bold mb-3">8. Limitation of Liability</h6>
-                    <p class="mb-3">We're not liable for:</p>
-                    <ul class="mb-4">
-                        <li>Indirect damages (e.g., lost profits).</li>
-                        <li>Third-party issues (e.g., PayPal outages).</li>
-                        <li>Your misuse of our products.</li>
-                        <li class="text-muted">(If local law doesn't allow this limitation, it applies to the fullest extent permitted.)</li>
-                    </ul>
-
-                    <h6 class="fw-bold mb-3">9. Dispute Resolution</h6>
-                    <ul class="mb-4">
-                        <li>Step 1: Email us at support@strategicsloth.com to resolve issues.</li>
-                        <li>Step 2: Unresolved? Binding arbitration in Singapore under ICC Rules (no class actions).</li>
-                    </ul>
-
-                    <h6 class="fw-bold mb-3">10. Updates & Contact</h6>
-                    <ul class="mb-4">
-                        <li>Changes: We'll update these Terms and note the "Last Updated" date.</li>
-                        <li>Questions? Contact support@strategicsloth.com.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="cookieModalLabel">Cookie Policy</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p class="mb-4">Last Updated: March 1, 2025</p>
-                    <p>This policy explains how Strategic Sloth LLC ("we," "us") uses cookies and similar technologies on strategicsloth.com. By using our site, you consent to our use of cookies as described below.</p>
-
-                    <h6 class="fw-bold mb-3">1. What Are Cookies?</h6>
-                    <p class="mb-3">Cookies are small text files stored on your device when you visit websites. They help with:</p>
-                    <ul class="mb-4">
-                        <li>Functionality (e.g., remembering your login).</li>
-                        <li>Analytics (e.g., tracking visitor counts).</li>
-                        <li>Marketing (e.g., showing relevant ads).</li>
-                    </ul>
-
-                    <h6 class="fw-bold mb-3">2. Cookies We Use</h6>
-                    <div class="table-responsive mb-4">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Category</th>
-                                    <th>Purpose</th>
-                                    <th>Examples</th>
-                                    <th>How to Opt Out</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Essential</td>
-                                    <td>Required for the site to work (e.g., checkout, account logins).</td>
-                                    <td>Session cookies, payment forms.</td>
-                                    <td>Cannot opt out (site won't function).</td>
-                                </tr>
-                                <tr>
-                                    <td>Analytics</td>
-                                    <td>Helps us improve the site (anonymous data on visits, clicks, etc.).</td>
-                                    <td>Google Analytics.</td>
-                                    <td>Disable via browser settings or CookieBot.</td>
-                                </tr>
-                                <tr>
-                                    <td>Marketing</td>
-                                    <td>Used for ads (e.g., Facebook retargeting to show our products to visitors).</td>
-                                    <td>Facebook Pixel, Google Ads.</td>
-                                    <td>Opt out via YourOnlineChoices.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <h6 class="fw-bold mb-3">3. How to Manage Cookies</h6>
-                    <ul class="mb-4">
-                        <li>Browser Settings: Block/delete cookies via Chrome (guide), Safari, Firefox, etc.</li>
-                        <li>Third-Party Tools: Use GDPR-compliant consent managers like:
-                            <ul>
-                                <li>CookieYes</li>
-                                <li>Termly (for auto-blocking until consent).</li>
-                            </ul>
-                        </li>
-                        <li>Mobile Devices: Adjust settings in iOS/Android for tracking limits.</li>
-                        <li class="text-muted">(Note: Blocking cookies may break parts of the site, like checkout.)</li>
-                    </ul>
-
-                    <h6 class="fw-bold mb-3">4. Other Tracking Technologies</h6>
-                    <p class="mb-3">We may also use:</p>
-                    <ul class="mb-4">
-                        <li>Local Storage: Similar to cookies (stores data in your browser).</li>
-                        <li>Pixels/Tags: Tiny images/scripts for tracking (e.g., ad conversions).</li>
-                    </ul>
-
-                    <h6 class="fw-bold mb-3">5. Updates to This Policy</h6>
-                    <p class="mb-4">We'll post changes here with a new "Last Updated" date.</p>
-
-                    <h6 class="fw-bold mb-3">6. Contact Us</h6>
-                    <p class="mb-4">For cookie-related questions, email support@strategicsloth.com.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Back to top button
-        const backToTop = document.querySelector('.back-to-top');
-        if (backToTop) {
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 300) {
-                    backToTop.classList.add('active');
+                const currentScroll = window.scrollY;
+                
+                // Show/hide based on scroll direction and threshold
+                if (currentScroll > lastScroll && currentScroll > scrollThreshold) {
+                    // Scrolling down & past threshold - hide CTA
+                    mobileCta.classList.add('hidden');
                 } else {
-                    backToTop.classList.remove('active');
+                    // Scrolling up or near top - show CTA
+                    mobileCta.classList.remove('hidden');
                 }
+                
+                lastScroll = currentScroll;
             });
+        });
+    </script>
 
-            backToTop.addEventListener('click', (e) => {
-                e.preventDefault();
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
+    <!-- Back to Top Button -->
+    <style>
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bs-primary);
+            color: white;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            text-decoration: none;
         }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            color: white;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+        }
+
+        @media (max-width: 767.98px) {
+            .back-to-top {
+                bottom: 90px;  /* Position above mobile CTA */
+            }
+        }
+    </style>
+
+    <!-- Back to top button script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTop = document.querySelector('.back-to-top');
+            if (backToTop) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 300) {
+                        backToTop.classList.add('active');
+                    } else {
+                        backToTop.classList.remove('active');
+                    }
+                });
+
+                backToTop.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        });
     </script>
 </body>
 
