@@ -361,10 +361,15 @@ For over a decade, I designed magic for giants like Disney, Hasbro, and Universa
         /* Navbar Dropdown Fix */
         #mainNav #navcol-1.navbar-collapse {
             display: none;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
         #mainNav #navcol-1.navbar-collapse.show {
             display: block !important;
+            opacity: 1;
+            transform: translateY(0);
             position: absolute;
             top: 100%;
             left: 0;
@@ -375,6 +380,10 @@ For over a decade, I designed magic for giants like Disney, Hasbro, and Universa
             border-radius: 0.5rem;
             margin-top: 0.5rem;
             z-index: 1030;
+        }
+
+        #mainNav #navcol-1.navbar-collapse.collapsing {
+            display: block !important;
         }
 
         #mainNav #navcol-1.navbar-collapse.show .navbar-nav {
@@ -397,6 +406,8 @@ For over a decade, I designed magic for giants like Disney, Hasbro, and Universa
         @media (min-width: 1200px) {
             #mainNav #navcol-1.navbar-collapse {
                 display: flex !important;
+                opacity: 1;
+                transform: none;
                 position: static;
                 background: none;
                 box-shadow: none;
@@ -2043,20 +2054,71 @@ For over a decade, I designed magic for giants like Disney, Hasbro, and Universa
             const navbar = document.getElementById('mainNav');
             const navbarCollapse = document.getElementById('navcol-1');
             const navbarToggler = document.querySelector('.navbar-toggler');
+            let isTransitioning = false;
 
             // Function to close the navbar
             function closeNavbar() {
-                if (navbarCollapse.classList.contains('show')) {
-                    navbarCollapse.classList.remove('show');
+                if (!isTransitioning && navbarCollapse.classList.contains('show')) {
+                    isTransitioning = true;
+                    navbarCollapse.style.opacity = '0';
+                    navbarCollapse.style.transform = 'translateY(-10px)';
+                    
+                    setTimeout(() => {
+                        navbarCollapse.classList.remove('show');
+                        isTransitioning = false;
+                    }, 300);
                 }
             }
+
+            // Function to open the navbar
+            function openNavbar() {
+                if (!isTransitioning && !navbarCollapse.classList.contains('show')) {
+                    isTransitioning = true;
+                    navbarCollapse.classList.add('show');
+                    
+                    // Trigger reflow
+                    navbarCollapse.offsetHeight;
+                    
+                    navbarCollapse.style.opacity = '1';
+                    navbarCollapse.style.transform = 'translateY(0)';
+                    
+                    setTimeout(() => {
+                        isTransitioning = false;
+                    }, 300);
+                }
+            }
+
+            // Handle hamburger menu click
+            navbarToggler.addEventListener('click', function(event) {
+                event.stopPropagation();
+                if (navbarCollapse.classList.contains('show')) {
+                    closeNavbar();
+                } else {
+                    openNavbar();
+                }
+            });
 
             // Close navbar when clicking outside
             document.addEventListener('click', function(event) {
                 const isClickInside = navbar.contains(event.target);
-                
-                // If the click is outside the navbar and the navbar is expanded
                 if (!isClickInside && navbarCollapse.classList.contains('show')) {
+                    closeNavbar();
+                }
+            });
+
+            // Close navbar on scroll
+            let lastScroll = window.scrollY;
+            window.addEventListener('scroll', function() {
+                const currentScroll = window.scrollY;
+                if (currentScroll > lastScroll && navbarCollapse.classList.contains('show')) {
+                    closeNavbar();
+                }
+                lastScroll = currentScroll;
+            });
+
+            // Handle escape key press
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && navbarCollapse.classList.contains('show')) {
                     closeNavbar();
                 }
             });
@@ -2066,11 +2128,14 @@ For over a decade, I designed magic for giants like Disney, Hasbro, and Universa
                 event.stopPropagation();
             });
 
-            // Handle escape key press
-            document.addEventListener('keydown', function(event) {
-                if (event.key === 'Escape' && navbarCollapse.classList.contains('show')) {
-                    closeNavbar();
-                }
+            // Close navbar when clicking a nav link
+            const navLinks = document.querySelectorAll('#mainNav .nav-link');
+            navLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    if (navbarCollapse.classList.contains('show')) {
+                        closeNavbar();
+                    }
+                });
             });
         });
     </script>
