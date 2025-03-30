@@ -27,6 +27,46 @@ For over a decade, I designed magic for giants like Disney, Hasbro, and Universa
         }
     </style>
     
+    <!-- Index-specific navbar overrides -->
+    <style>
+        /* Index-specific navbar overrides */
+        html body #mainNav #navcol-1 {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            width: 100% !important;
+        }
+
+        html body #mainNav #navcol-1 .navbar-nav {
+            flex: 1 !important;
+            display: flex !important;
+            justify-content: center !important;
+            margin: 0 auto !important;
+            padding: 0 !important;
+            gap: 0.5rem !important;  /* Using the same gap as blog.html */
+        }
+
+        html body #mainNav #navcol-1 .navbar-nav .nav-link {
+            padding-left: 0.75rem !important;  /* Match blog.html padding */
+            padding-right: 0.75rem !important;
+        }
+
+        html body #mainNav #navcol-1 .btn-primary {
+            margin-left: 1rem !important;
+        }
+
+        @media (min-width: 1200px) {
+            html body #mainNav #navcol-1 .navbar-nav {
+                position: static !important;
+                transform: none !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                display: flex !important;
+                justify-content: center !important;
+            }
+        }
+    </style>
+    
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/force-light.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">

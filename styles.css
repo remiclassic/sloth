@@ -1,3 +1,5 @@
+
+
 /* Remove dark mode styles */
 body {
     background-color: #ffffff; /* Ensure light background */
@@ -22,4 +24,13 @@ body {
 body {
   background-color: #ffffff !important;
   color: #000000 !important;
+}
+
+.article-footer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
 } 
