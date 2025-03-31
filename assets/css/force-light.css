@@ -2464,42 +2464,55 @@ footer hr {
     position: relative;
     z-index: 2;
     transform-style: preserve-3d;
-    animation: bookFloat 6s ease-in-out infinite, bookRotate 12s ease-in-out infinite;
+    animation: bookFloat 6s ease-in-out infinite;
     will-change: transform;
     filter: drop-shadow(0 10px 20px rgba(99, 102, 241, 0.3));
     width: 100%;
     height: auto;
-    pointer-events: none;
+    pointer-events: none !important;
+    overflow: visible !important;
 }
 
+@keyframes bookFloat {
+    0%, 100% {
+        transform: translateY(0) rotateY(-5deg);
+    }
+    50% {
+        transform: translateY(-20px) rotateY(-5deg);
+    }
+}
+
+/* Remove hover effects */
+.book-animation-wrapper {
+    pointer-events: none !important;
+    position: relative;
+    overflow: visible !important;
+}
+
+.book-animation-wrapper:hover .hero-image {
+    animation: none !important;
+}
+
+/* Mobile Styles */
+@media (max-width: 1199.98px) {
+    .hero-image {
+        transform: none;
+        animation: bookFloat 6s ease-in-out infinite;
+        max-width: 100%;
+        margin: 0 auto;
+        pointer-events: none !important;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .hero-image {
+        animation: none;
+        transform: none;
+    }
+}
+
+/* Remove book glow */
 .book-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 160%;
-    height: 160%;
-    border-radius: 1rem;
-    background: 
-        radial-gradient(circle at center,
-            rgba(255, 255, 255, 0.5) 0%,
-            rgba(255, 255, 255, 0.3) 20%,
-            rgba(255, 255, 255, 0.1) 40%,
-            rgba(255, 255, 255, 0) 70%),
-        radial-gradient(circle at center,
-            rgba(99, 102, 241, 0.6) 0%,
-            rgba(99, 102, 241, 0.4) 20%,
-            rgba(99, 102, 241, 0.3) 40%,
-            rgba(99, 102, 241, 0) 80%),
-        radial-gradient(circle at center,
-            rgba(124, 58, 237, 0.4) 0%,
-            rgba(124, 58, 237, 0.3) 20%,
-            rgba(124, 58, 237, 0.2) 40%,
-            rgba(124, 58, 237, 0) 80%);
-    filter: blur(15px);
-    opacity: 1;
-    z-index: 1;
-    animation: glowPulse 3s ease-in-out infinite alternate,
-               glowRotate 8s linear infinite;
-    pointer-events: none;
-} 
+    display: none !important;
+}
