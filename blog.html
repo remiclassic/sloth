@@ -882,7 +882,7 @@
                 margin-top: 0.5rem;
                 position: absolute;
                 top: 100%;
-                left: 0;
+            left: 0;
                 right: 0;
                 z-index: 1020;
             }
@@ -1308,7 +1308,7 @@
 
             #mainNav #navcol-1.navbar-collapse .navbar-nav {
                 flex-direction: row;
-                justify-content: center;
+            justify-content: center;
                 margin: 0 auto;
                 gap: 0.5rem;
             }
@@ -2472,57 +2472,8 @@
     </div>
 
     <link rel="stylesheet" href="assets/css/social-proof.css">
-    <script>
-        const names = [
-            'Alex', 'Sarah', 'Mike', 'Emma', 'Luis', 'Yuki', 'Maria', 'Ahmed', 'Sophie', 'Chen',
-            'Liam', 'Olivia', 'Noah', 'Ava', 'James', 'Isabella', 'Ethan', 'Sofia', 'Lucas', 'Mia'
-        ];
-
-        const locations = [
-            'New York', 'London', 'Toronto', 'Sydney', 'Madrid', 'Tokyo', 'São Paulo', 'Dubai',
-            'Paris', 'Singapore', 'Berlin', 'Mumbai', 'Vancouver', 'Amsterdam', 'Stockholm',
-            'Seoul', 'Melbourne', 'Barcelona', 'Vienna', 'Cape Town'
-        ];
-
-        const actions = [
-            'just bought \'Don\'t Do Anything\'!',
-            'grabbed the Lazy Genius Bundle!',
-            'just signed up!',
-            'joined the community!',
-            'purchased the Ultimate Freedom Package!',
-            'started their journey!',
-            'joined the movement!'
-        ];
-
-        const notification = document.getElementById('social-proof-notification');
-        const notificationText = notification.querySelector('.notification-text');
-
-        function getRandomItem(array) {
-            return array[Math.floor(Math.random() * array.length)];
-        }
-
-        function showNotification() {
-            const name = getRandomItem(names);
-            const location = getRandomItem(locations);
-            const action = getRandomItem(actions);
-
-            notificationText.innerHTML = `<strong>${name}</strong> from <span class="notification-location">${location}</span> ${action}`;
-            
-            notification.classList.add('show');
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-                
-                // Schedule next notification with random delay between 15-30 seconds
-                const nextDelay = Math.floor(Math.random() * (30000 - 15000) + 15000);
-                setTimeout(showNotification, nextDelay);
-            }, 5000);
-        }
-
-        // Start the notification cycle after a random delay (5-15 seconds)
-        const initialDelay = Math.floor(Math.random() * (15000 - 5000) + 5000);
-        setTimeout(showNotification, initialDelay);
-    </script>
+    <script src="assets/js/social-proof.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Back to top button script -->
     <script>
@@ -2675,7 +2626,7 @@
             // Function to handle article expansion
             function expandArticle(article, readMoreBtn) {
                 // Close all other articles first
-                articles.forEach(otherArticle => {
+                    articles.forEach(otherArticle => {
                     if (otherArticle !== article) {
                         otherArticle.classList.remove('show');
                         const otherLink = otherArticle.closest('article').querySelector('.read-more');
@@ -2725,7 +2676,7 @@
                     const targetId = this.getAttribute('href').substring(1);
                     const targetArticle = document.getElementById(targetId);
                     
-                    if (targetArticle) {
+                if (targetArticle) {
                         // Scroll to article
                         targetArticle.scrollIntoView({ behavior: 'smooth' });
                         
@@ -2734,9 +2685,9 @@
                         const readMore = targetArticle.querySelector('.read-more');
                         if (content) {
                             expandArticle(content, readMore);
-                        }
                     }
-                });
+                }
+            });
             });
         });
     </script>

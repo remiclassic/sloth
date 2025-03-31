@@ -528,9 +528,35 @@ For over a decade, I designed magic for giants like Disney, Hasbro, and Universa
                                     </div>
                                     <p class="text-white-50 mb-0 fst-italic">"My fashion blog had 10K followers but no income. After launching a 'Capsule Wardrobe PDF,' I replaced my Paris retail job in 90 days!"</p>
                                 </div>
+                                <div class="testimonial-slide bg-white bg-opacity-10 rounded-4 p-4">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="avatar-circle bg-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 48px; height: 48px;">
+                                            <span class="h5 mb-0 text-primary">KT</span>
+                                        </div>
+                                        <div class="text-white">
+                                            <h5 class="mb-1">Kai T.</h5>
+                                            <p class="small mb-0 text-white-50">Singapore</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-white-50 mb-0 fst-italic">"In just 3 months, I transformed my tech tutorials into a thriving digital product business. The freedom is incredible!"</p>
+                                </div>
+                                <div class="testimonial-slide bg-white bg-opacity-10 rounded-4 p-4">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="avatar-circle bg-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 48px; height: 48px;">
+                                            <span class="h5 mb-0 text-primary">IL</span>
+                                        </div>
+                                        <div class="text-white">
+                                            <h5 class="mb-1">Isabella L.</h5>
+                                            <p class="small mb-0 text-white-50">Buenos Aires</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-white-50 mb-0 fst-italic">"From struggling freelancer to earning $4K monthly with my digital products. This system really works!"</p>
+                                </div>
                                 <div class="testimonial-dots d-flex justify-content-center gap-2 mt-3">
                                     <button class="btn btn-sm btn-white rounded-circle p-1 active" style="width: 8px; height: 8px;" data-slide="0"></button>
                                     <button class="btn btn-sm btn-white rounded-circle p-1" style="width: 8px; height: 8px;" data-slide="1"></button>
+                                    <button class="btn btn-sm btn-white rounded-circle p-1" style="width: 8px; height: 8px;" data-slide="2"></button>
+                                    <button class="btn btn-sm btn-white rounded-circle p-1" style="width: 8px; height: 8px;" data-slide="3"></button>
                                 </div>
                             </div>
                         </div>
@@ -1722,61 +1748,8 @@ For over a decade, I designed magic for giants like Disney, Hasbro, and Universa
     </div>
 
     <link rel="stylesheet" href="assets/css/social-proof.css">
-    <script>
-        const names = [
-            'Alex', 'Sarah', 'Mike', 'Emma', 'Luis', 'Yuki', 'Maria', 'Ahmed', 'Sophie', 'Chen',
-            'Liam', 'Olivia', 'Noah', 'Ava', 'James', 'Isabella', 'Ethan', 'Sofia', 'Lucas', 'Mia'
-        ];
-
-        const locations = [
-            'New York', 'London', 'Toronto', 'Sydney', 'Madrid', 'Tokyo', 'São Paulo', 'Dubai',
-            'Paris', 'Singapore', 'Berlin', 'Mumbai', 'Vancouver', 'Amsterdam', 'Stockholm',
-            'Seoul', 'Melbourne', 'Barcelona', 'Vienna', 'Cape Town'
-        ];
-
-        const actions = [
-            'just bought \'Don\'t Do Anything\'!',
-            'grabbed the Lazy Genius Bundle!',
-            'just signed up!',
-            'joined the community!',
-            'purchased the Ultimate Freedom Package!',
-            'started their journey!',
-            'joined the movement!'
-        ];
-
-        const notification = document.getElementById('social-proof-notification');
-        const notificationText = notification.querySelector('.notification-text');
-
-        function getRandomItem(array) {
-            return array[Math.floor(Math.random() * array.length)];
-        }
-
-        function showNotification() {
-            const name = getRandomItem(names);
-            const location = getRandomItem(locations);
-            const action = getRandomItem(actions);
-
-            notificationText.innerHTML = `<strong>${name}</strong> from <span class="notification-location">${location}</span> ${action}`;
-            
-            notification.classList.add('show');
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-                
-                // Schedule next notification with random delay between 15-30 seconds
-                const nextDelay = Math.floor(Math.random() * (30000 - 15000) + 15000);
-                setTimeout(showNotification, nextDelay);
-            }, 5000);
-        }
-
-        // Start the notification cycle after a random delay (5-15 seconds)
-        const initialDelay = Math.floor(Math.random() * (15000 - 5000) + 5000);
-        setTimeout(showNotification, initialDelay);
-    </script>
+    <script src="assets/js/social-proof.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/bs-init.js"></script>
-    <script src="assets/js/bold-and-dark.js"></script>
-    <script src="assets/js/countdown.js"></script>
 
     <!-- Mobile menu auto-close script -->
     <script>
