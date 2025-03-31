@@ -7,6 +7,7 @@
     --sloth-purple: #4F46E5;
     --sloth-light-purple: #B4B3F6;
     --sloth-yellow: #fbbf24;
+    --sloth-text: rgba(54, 49, 118, 1);
 }
 
 /* Override any dark mode preferences */
@@ -22,7 +23,7 @@
     
     body {
         background-color: #ffffff !important;
-        color: #212529 !important;
+        color: rgba(54, 49, 118, 1) !important;
     }
     
     .navbar,
@@ -31,12 +32,12 @@
     .offcanvas,
     .dropdown-menu {
         background-color: #ffffff !important;
-        color: #212529 !important;
+        color: var(--sloth-text) !important;
     }
     
     /* Force light text colors except in specific sections */
     .text-white:not(.bg-primary *):not(.about-section *):not(header.bg-primary *):not(header *) {
-        color: #212529 !important;
+        color: var(--sloth-text) !important;
     }
     
     /* Force light backgrounds except in specific sections */
@@ -1325,11 +1326,11 @@ footer .container {
 
 /* Text color adjustments */
 footer .text-muted {
-    color: #212529 !important;
+    color: var(--sloth-text) !important;
 }
 
 footer .footer-links a {
-    color: #212529 !important;
+    color: var(--sloth-text) !important;
     transition: color 0.2s ease !important;
 }
 
@@ -2278,11 +2279,11 @@ footer .container {
 
 /* Text color adjustments */
 footer .text-muted {
-    color: #212529 !important;
+    color: var(--sloth-text) !important;
 }
 
 footer .footer-links a {
-    color: #212529 !important;
+    color: var(--sloth-text) !important;
     transition: color 0.2s ease !important;
 }
 
@@ -2515,4 +2516,11 @@ footer hr {
 /* Remove book glow */
 .book-glow {
     display: none !important;
+}
+
+img[src*="escapeplantsloth.png"] {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }

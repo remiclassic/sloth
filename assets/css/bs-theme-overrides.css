@@ -7,10 +7,10 @@
     --bs-info-rgb: 13, 202, 240;
     --bs-light: #f8f9fa;
     --bs-light-rgb: 248, 249, 250;
-    --bs-dark: #212529;
-    --bs-dark-rgb: 33, 37, 41;
+    --bs-dark: #363176;
+    --bs-dark-rgb: 54, 49, 118;
     --bs-body-bg: #ffffff !important;
-    --bs-body-color: #212529 !important;
+    --bs-body-color: rgba(54, 49, 118, 1) !important;
     --bs-link-color: #4f46e5;
     --bs-link-hover-color: #4338ca;
     --bs-border-radius: 0.5rem;
@@ -21,7 +21,7 @@
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
-    color: var(--bs-body-color) !important;
+    color: rgba(54, 49, 118, 1) !important;
     background-color: var(--bs-body-bg) !important;
     padding-top: 76px;
 }
@@ -400,7 +400,7 @@ body {
 
 .hero-bg {
     height: 600px;
-    background: url("assets/img/corpsloth.png") center / cover;
+    background: url("assets/img/escapeplantsloth.png") center / cover;
 }
 
 .hero-container {
@@ -428,8 +428,12 @@ body {
     border-style: none;
 }
 
+.text-muted {
+    color: rgba(54, 49, 118, 0.75) !important;
+}
+
 .text-muted-90 {
-    color: rgba(51, 51, 51, 0.9);
+    color: rgba(54, 49, 118, 0.9) !important;
 }
 
 .footer-height {
@@ -1735,7 +1739,7 @@ header .btn-outline-light:hover {
 .display-6,
 h2.fw-bold:not(header h2),
 .h2.fw-bold:not(header .h2) {
-    color: #4F46E5 !important;
+    color: rgba(54, 49, 118, 1) !important;
 }
 
 /* Override forced white text in specific sections */
