@@ -432,6 +432,107 @@ For over a decade, I designed magic for giants like Disney, Hasbro, and Universa
             }
         }
     </style>
+
+    <style>
+        /* Isolated Exit Intent Popup Styles */
+        .strategic-exit-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 99999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .strategic-exit-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .strategic-exit-container {
+            background: url('assets/img/slothrelaxing.jpeg') center/cover no-repeat;
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            margin: auto;
+            position: relative;
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .strategic-exit-overlay.active .strategic-exit-container {
+            transform: translateY(0);
+        }
+
+        .strategic-exit-header {
+            margin-bottom: 1.5rem;
+            position: relative;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .strategic-exit-close {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--bs-primary);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            line-height: 1;
+            z-index: 2;
+        }
+
+        .strategic-exit-body {
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .strategic-exit-form {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .strategic-exit-form input {
+            flex: 1;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 4px;
+            background: rgba(255,255,255,0.9);
+        }
+
+        .strategic-exit-form button {
+            background: var(--bs-primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .strategic-exit-form button:hover {
+            background: var(--bs-primary-dark);
+        }
+
+        .strategic-exit-body .small {
+            color: rgba(255,255,255,0.8);
+        }
+    </style>
 </head>
 
 <body>
@@ -1559,13 +1660,13 @@ For over a decade, I designed magic for giants like Disney, Hasbro, and Universa
                 <h4>Wait! Don't miss out on financial freedom</h4>
                 <button class="strategic-exit-close">&times;</button>
             </div>
+            <img src="assets/img/transparent.png" alt="" class="strategic-exit-center-image">
             <div class="strategic-exit-body">
-                <img src="assets/img/hamocksloth.png" alt="Strategic Sloth" class="strategic-exit-image">
-                <p class="lead">Get our free guide: "5 Lazy Wealth Secrets"</p>
                 <form id="strategic-exit-form" class="strategic-exit-form">
                     <input type="email" placeholder="Enter your email" required>
                     <button type="submit" class="btn btn-primary">Get Free Guide</button>
                 </form>
+                <p class="lead">Get our free guide: "5 Lazy Wealth Secrets"</p>
                 <p class="small text-muted mt-2">No spam, ever. Unsubscribe anytime.</p>
             </div>
         </div>
@@ -1592,7 +1693,7 @@ For over a decade, I designed magic for giants like Disney, Hasbro, and Universa
         }
 
         .strategic-exit-container {
-            background: white;
+            background: url('assets/img/slothrelaxing.jpeg') center/cover no-repeat;
             padding: 2rem;
             border-radius: 12px;
             max-width: 500px;
@@ -1601,6 +1702,7 @@ For over a decade, I designed magic for giants like Disney, Hasbro, and Universa
             position: relative;
             transform: translateY(-20px);
             transition: transform 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
         .strategic-exit-overlay.active .strategic-exit-container {
@@ -1610,6 +1712,8 @@ For over a decade, I designed magic for giants like Disney, Hasbro, and Universa
         .strategic-exit-header {
             margin-bottom: 1.5rem;
             position: relative;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .strategic-exit-close {
@@ -1631,10 +1735,9 @@ For over a decade, I designed magic for giants like Disney, Hasbro, and Universa
             z-index: 2;
         }
 
-        .strategic-exit-image {
-            max-width: 200px;
-            margin: 0 auto 1.5rem;
-            display: block;
+        .strategic-exit-body {
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .strategic-exit-form {
@@ -1646,8 +1749,27 @@ For over a decade, I designed magic for giants like Disney, Hasbro, and Universa
         .strategic-exit-form input {
             flex: 1;
             padding: 0.5rem 1rem;
-            border: 1px solid #ddd;
+            border: 1px solid rgba(255,255,255,0.3);
             border-radius: 4px;
+            background: rgba(255,255,255,0.9);
+        }
+
+        .strategic-exit-form button {
+            background: var(--bs-primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .strategic-exit-form button:hover {
+            background: var(--bs-primary-dark);
+        }
+
+        .strategic-exit-body .small {
+            color: rgba(255,255,255,0.8);
         }
     </style>
 

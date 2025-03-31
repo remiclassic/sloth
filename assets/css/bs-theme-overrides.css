@@ -1594,76 +1594,67 @@ section + section {
 }
 
 /* Exit Intent Popup Styles */
-.exit-popup {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 9999;
-    animation: fadeIn 0.3s ease-out;
-}
-
-.popup-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    padding: 2rem;
-    border-radius: 1rem;
-    max-width: 500px;
-    width: 90%;
+.strategic-exit-container {
+    background: #e8f5e9;  /* Light mint green background */
     text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    padding: 1.5rem;  /* Reduced from 2rem */
+    margin-bottom: 0;  /* Remove bottom margin if any */
 }
 
-.popup-header {
-    position: relative;
+.strategic-exit-header h4 {
+    color: #0d472c;  /* Dark green */
+    font-size: 2.5rem;
+    font-weight: bold;
     margin-bottom: 1.5rem;
 }
 
-.close-popup {
-    position: absolute;
-    top: -1rem;
-    right: -1rem;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 0.5rem;
+.strategic-exit-body {
+    padding-bottom: 1rem;  /* Reduced bottom padding */
 }
 
-.popup-image {
-    max-width: 150px;
-    margin-bottom: 1rem;
+.strategic-exit-body .lead {
+    color: #0d472c;  /* Dark green */
+    font-size: 1.75rem;
+    margin: 2rem 0;
 }
 
-.popup-form {
+.strategic-exit-form {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    margin: 1.5rem 0;
+    gap: 0.5rem;  /* Reduced from 0.75rem */
+    margin: 0.5rem auto;  /* Reduced from 1rem */
+    max-width: 400px;
 }
 
-.popup-form input {
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 0.5rem;
+.strategic-exit-form input {
+    padding: 1rem 1.5rem;
+    border: 1px solid rgba(13, 71, 44, 0.2);
+    border-radius: 50px;
+    font-size: 1.25rem;
+    background: white;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+.strategic-exit-form button:hover {
+    background: #4f46e5 !important; /* Slightly darker shade of the primary color */
+    opacity: 1 !important;
+    color: white !important;
 }
 
-/* Hide popup on mobile devices */
-@media (max-width: 768px) {
-    .exit-popup {
-        display: none !important;
-    }
+.strategic-exit-form button {
+    background: #6366f1 !important;
+    color: white !important;
+    opacity: 1 !important;
+}
+
+.strategic-exit-image {
+    max-width: 400px;
+    margin: 0 auto 2rem;
+}
+
+.small.text-muted {
+    color: rgba(13, 71, 44, 0.7) !important;
+    margin-top: 1rem;
+    margin-bottom: 0;  /* Remove bottom margin from the last element */
 }
 
 /* Legal Document Modal Styles */
@@ -2062,4 +2053,32 @@ header .hero-image {
     100% {
         background-position: 0% 50%;
     }
+}
+
+.strategic-exit-center-image {
+    max-width: 200px;
+    height: auto;
+    margin: 1rem auto;
+    display: block;
+}
+
+.strategic-exit-body {
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    padding: 0.5rem;  /* Reduced from 1rem */
+}
+
+.strategic-exit-body .lead {
+    font-size: 1.25rem;
+    margin: 0.5rem 0;  /* Reduced from 1rem */
+}
+
+.strategic-exit-body .small {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;  /* Reduced from 0.5rem */
+}
+
+.strategic-exit-form button {
+    margin-bottom: 0.25rem;  /* Added small margin after button */
 } 
