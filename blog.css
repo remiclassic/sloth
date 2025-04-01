@@ -1,0 +1,79 @@
+/* Blog Post Section Styles */
+.blog-post {
+    background-color: #ffffff !important;  /* Force white background */
+    padding: 2rem 0;
+}
+
+.blog-post .container {
+    max-width: 800px;  /* Limit content width for readability */
+    margin: 0 auto;
+}
+
+.blog-post-content {
+    color: #212529 !important;  /* Force dark text color */
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* Blog Post Header */
+.blog-header {
+    background: linear-gradient(135deg, #6366f1, #4f46e5) !important;  /* Match site's primary gradient */
+    padding: 6rem 0 3rem !important;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.blog-header-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+}
+
+.blog-header .badge {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+}
+
+.blog-header h1 {
+    color: #ffffff !important;
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.2;
+}
+
+.blog-header .lead {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Blog Post Typography */
+.blog-post h2 {
+    color: #212529 !important;
+    font-size: 1.8rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.blog-post h3 {
+    color: #212529 !important;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.blog-post p {
+    margin-bottom: 1.5rem;
+}
+
+.blog-post ul,
+.blog-post ol {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.blog-post li {
+    margin-bottom: 0.5rem;
+} 

@@ -31,647 +31,43 @@
     <link rel="stylesheet" href="assets/css/Pricing-Centered-badges.css">
     <link rel="stylesheet" href="assets/css/blog.css">
     
-    <!-- Super specific navbar styles -->
+    <!-- Navbar Styles -->
     <style>
-        /* Super specific navbar link styles */
-        #mainNav .navbar-collapse .navbar-nav .nav-item .nav-link {
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            color: #212529 !important;
-            font-weight: 500 !important;
-            padding: 0.5rem 1rem !important;
-            text-decoration: none !important;
-        }
-
-        /* Specific hover state */
-        #mainNav .navbar-collapse .navbar-nav .nav-item .nav-link:hover {
-            color: var(--bs-primary) !important;
-        }
-
-        /* Active state */
-        #mainNav .navbar-collapse .navbar-nav .nav-item .nav-link.active {
-            color: var(--bs-primary) !important;
-        }
-
-        /* Force navbar layout in desktop */
-        @media (min-width: 1200px) {
-            #mainNav .navbar-collapse {
-                display: flex !important;
-                flex-basis: auto !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-            }
-
-            #mainNav .navbar-nav {
-                display: flex !important;
-                flex-direction: row !important;
-                align-items: center !important;
-                margin-right: auto !important;
-                margin-left: auto !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-            }
-
-            #mainNav .nav-item {
-                display: block !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-            }
-
-            /* Get Started button */
-            #mainNav .btn-primary {
-                display: inline-block !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-                color: white !important;
-            }
-        }
-    </style>
-    
-    <style>
-        /* Enhanced transitions and animations */
-        .article-collapse {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            will-change: height, opacity;
-            opacity: 0;
-            display: none;
-        }
-
-        .article-collapse.show {
-            opacity: 1;
-            display: block;
-        }
-        
-        /* Improved sticky sidebar */
-        .sticky-top {
-            position: sticky;
-            top: 5rem;
-            z-index: 1020;
-            height: fit-content;
-        }
-        
-        /* Enhanced card design */
-        .card {
-            border-radius: 1rem;
-            border: none;
-            transition: all 0.3s ease;
+        /* Index-specific navbar overrides */
+        html body #mainNav {
+            padding-top: 0.5rem !important;
+            padding-bottom: 0.5rem !important;
             background-color: #ffffff;
-        }
-
-        .card.hover-lift {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card.hover-lift:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 1rem 2rem rgba(0,0,0,0.12)!important;
-        }
-
-        /* Blog-specific styles */
-        .blog-header {
-            padding: 6rem 0 3rem;
-            background: linear-gradient(135deg, #f6f9fc 0%, #f1f4f9 100%);
-            margin-bottom: 2rem;
-        }
-
-        .blog-card {
-            height: 100%;
-        }
-
-        .blog-card .card-img-top {
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .blog-meta {
-            font-size: 0.875rem;
-            color: #6c757d;
-        }
-
-        .blog-categories .badge {
-            font-size: 0.75rem;
-            padding: 0.5em 1em;
-            margin-right: 0.5rem;
-        }
-
-        /* Ensure content visibility */
-        .blog-articles {
-            display: block;
-            visibility: visible;
-        }
-
-        .blog-articles article {
-            display: block;
-            visibility: visible;
-        }
-
-        .blog-articles .card-body {
-            display: block;
-            visibility: visible;
-        }
-
-        /* Fix sidebar visibility */
-        .col-lg-4 {
-            display: block;
-            visibility: visible;
-        }
-
-        .col-lg-4 .card {
-            display: block;
-            visibility: visible;
-        }
-
-        /* Ensure proper spacing */
-        .container.py-4 {
-            padding-top: 2rem !important;
-            padding-bottom: 2rem !important;
-        }
-
-        .row.g-4 {
-            margin-top: 0;
-            margin-bottom: 0;
-        }
-
-        /* Fix navbar overlap */
-        body {
-            padding-top: 76px;
-        }
-    </style>
-
-    <!-- Add this after the existing styles -->
-    <style>
-        /* CSS Custom Properties */
-        :root {
-            --primary-color: #4834d4;
-            --primary-light: #686de0;
-            --text-dark: #2c3e50;
-            --text-light: #666;
-            --bg-light: #f8f9fa;
-            --bg-white: #ffffff;
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
-            --transition-fast: 0.2s ease;
-            --transition-normal: 0.3s ease;
-        }
-
-        /* Article Styles */
-        .article-content {
-            color: #212529;
-            background: var(--bg-white);
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: var(--shadow-sm);
-            margin-top: 1rem;
-        }
-
-        .article-title {
-            font-size: clamp(1.5rem, 5vw, 2.5rem);
-            line-height: 1.2;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 1rem;
-        }
-
-        .article-subtitle {
-            font-size: clamp(1rem, 3vw, 1.25rem);
-            color: var(--text-light);
-            font-weight: 500;
-            margin-bottom: 1.5rem;
-        }
-
-        /* Card Enhancements */
-        .card {
-            background: var(--bg-white);
-            border: none;
-            box-shadow: var(--shadow-sm);
-            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 2rem;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .card-body {
-            padding: 2rem;
-        }
-
-        /* Article Meta */
-        .article-meta {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .category-tag {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            background: var(--primary-color);
-            color: white;
-            transition: transform var(--transition-fast);
-        }
-
-        .category-tag:hover {
-            transform: translateY(-2px);
-        }
-
-        .reading-time {
-            color: var(--text-light);
-            font-size: 0.875rem;
-        }
-
-        /* Focus States */
-        .article-content:focus-within {
-            outline: 2px solid var(--bs-primary);
-            outline-offset: 2px;
-        }
-
-
-        /* Image Modal */
-        .image-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            cursor: pointer;
-        }
-
-        .modal-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90vh;
-        }
-
-        .modal-content img {
-            max-width: 100%;
-            max-height: 90vh;
-            object-fit: contain;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        /* Article Navigation */
-        .table-of-contents {
-            position: sticky;
-            top: 2rem;
-            background: var(--bg-white);
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: var(--shadow-sm);
-            margin-bottom: 2rem;
-        }
-
-        .table-of-contents h3 {
-            color: var(--text-dark);
-            margin-bottom: 1rem;
-            font-size: 1.25rem;
-        }
-
-        .table-of-contents ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .table-of-contents li {
-            margin-bottom: 0.5rem;
-        }
-
-        .table-of-contents a {
-            color: var(--text-light);
-            text-decoration: none;
-            transition: color var(--transition-fast);
-        }
-
-        .table-of-contents a:hover {
-            color: var(--primary-color);
-        }
-
-        /* Reading Progress Bar */
-        .reading-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--bg-light);
-            z-index: 1000;
-        }
-
-        .reading-progress-bar {
-            height: 100%;
-            background: var(--primary-color);
-            transition: width 0.2s ease;
-        }
-
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .table-of-contents {
-                position: static;
-                margin-top: 2rem;
-            }
-
-            .article-image {
-                height: 200px;
-            }
-
-            .card-body {
-                padding: 1.5rem;
-            }
-        }
-
-        /* Accessibility */
-        .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 0;
-            background: var(--primary-color);
-            color: white;
-            padding: 8px;
-            z-index: 100;
-        }
-
-        .skip-link:focus {
-            top: 0;
-        }
-
-        *:focus {
-            outline: 2px solid var(--primary-color);
-            outline-offset: 2px;
-        }
-
-        /* Print Styles */
-        @media print {
-            .navbar, .sidebar, .social-share {
-                display: none !important;
-            }
-
-            .article-content {
-                box-shadow: none;
-                padding: 0;
-            }
-
-            body {
-                padding-top: 0;
-            }
-        }
-
-        /* Reduced Motion */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
-            }
-        }
-
-        /* Notifications */
-        .notification {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            padding: 12px 20px;
-            border-radius: 8px;
-            background: white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            z-index: 1000;
-            animation: slideIn 0.3s ease forwards;
-        }
-
-        .notification-content {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .notification.success {
-            border-left: 4px solid var(--bs-success);
-        }
-
-        .notification.success svg {
-            stroke: var(--bs-success);
-        }
-
-        .notification.info {
-            border-left: 4px solid var(--bs-info);
-        }
-
-        .notification.info svg {
-            stroke: var(--bs-info);
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        /* Blog Sidebar */
-        .blog-sidebar {
-            position: sticky;
-            top: 100px; /* Account for fixed navbar */
-            max-height: calc(100vh - 120px);
-            overflow-y: auto;
-            padding-right: 1rem;
-            margin-bottom: 2rem;
-            /* Hide scrollbar but keep functionality */
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-
-        .blog-sidebar::-webkit-scrollbar {
-            display: none;
-        }
-
-        @media (max-width: 991.98px) {
-            .blog-sidebar {
-                position: static;
-                height: auto;
-                max-height: none;
-                overflow: visible;
-                padding-right: 0;
-            }
-        }
-
-        /* Ensure proper spacing */
-        .container.py-4 {
-            padding-top: 2rem !important;
-            padding-bottom: 4rem !important;
-        }
-
-        /* Fix navbar overlap */
-        body {
-            padding-top: 76px;
-        }
-    </style>
-
-    <!-- Article Transitions -->
-    <style>
-        /* Article Transitions */
-        .article-content {
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            will-change: opacity, max-height;
-            overflow: hidden;
-            opacity: 0;
-            max-height: 0;
-        }
-
-        .article-content.collapsing {
-            opacity: 0;
-            max-height: 0;
-        }
-
-        .article-content.show {
-            opacity: 1;
-            max-height: none;
-            overflow: visible;
-        }
-
-        .article-content.collapse:not(.show) {
-            display: block;
-            height: 0;
-            opacity: 0;
-            overflow: hidden;
-        }
-
-        /* Article Footer */
-        .article-footer {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-top: 1.5rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        /* Read More Link */
-        .read-more {
-            color: var(--bs-primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
-
-        .read-more:hover {
-            color: var(--bs-primary-dark);
-        }
-    </style>
-
-    <!-- Add this after your existing styles -->
-    <style>
-        /* Bootstrap Collapse Override */
-        .collapse:not(.show) {
-            display: block;
-            height: 0;
-            opacity: 0;
-            overflow: hidden;
-        }
-
-        .collapsing {
-            height: 0;
-            opacity: 0;
-            transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-                        opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-    </style>
-
- 
-
-    <style>
-        /* Article Tools and Footer */
-        .article-footer {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .article-image-container {
-            cursor: pointer;
-        }
-
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            right: 30px;
-            bottom: 30px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--bs-primary);
-            color: white;
-            opacity: 0;
-            visibility: hidden;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
-            z-index: 1000;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
+        }
+
+        html body #mainNav .navbar-brand {
+            color: #212529 !important;
+            font-weight: 600;
             text-decoration: none;
         }
 
-        .back-to-top:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            color: white;
+        html body #mainNav .navbar-toggler {
+            border: 1px solid rgba(0, 0, 0, 0.1) !important;
+            padding: 0.5rem;
+            background: none !important;
+            transition: all 0.3s ease;
         }
 
-        .back-to-top.active {
-            opacity: 1;
-            visibility: visible;
+        html body #mainNav .navbar-toggler:focus,
+        html body #mainNav .navbar-toggler:active {
+            outline: none !important;
+            box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.25) !important;
+            border-color: var(--bs-primary) !important;
         }
 
-        .back-to-top svg {
-            width: 20px;
-            height: 20px;
-            stroke: currentColor;
+        html body #mainNav .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2845, 45, 45, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+            width: 24px !important;
+            height: 24px !important;
         }
 
-        /* Article Footer */
-        .article-footer {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-top: 1.5rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-        }
-    </style>
-
-    <!-- Navbar styles -->
-    <style>
-        /* Blog-specific navbar overrides */
         html body #mainNav #navcol-1 {
             display: flex !important;
             justify-content: space-between !important;
@@ -688,12 +84,70 @@
             gap: 0.5rem !important;
         }
 
+        html body #mainNav .nav-link {
+            color: #212529 !important;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+
+        html body #mainNav .nav-link:hover,
+        html body #mainNav .nav-link.active {
+            color: var(--bs-primary) !important;
+        }
+
         html body #mainNav #navcol-1 .btn-primary {
             margin-left: 1rem !important;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Navbar Collapse Animation */
+        #mainNav #navcol-1.navbar-collapse {
+            display: flex !important;
+            opacity: 1;
+            transform: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            position: static;
+            background: none;
+            box-shadow: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        @media (max-width: 1199.98px) {
+            #mainNav #navcol-1.navbar-collapse {
+                display: none !important;
+                opacity: 0;
+                transform: translateY(-10px);
+                position: absolute !important;
+                top: 100% !important;
+                left: 0 !important;
+                right: 0 !important;
+                background: white !important;
+                padding: 1rem !important;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+            }
+
+            #mainNav #navcol-1.navbar-collapse.show {
+                display: flex !important;
+                opacity: 1;
+                transform: translateY(0);
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+
+            #mainNav #navcol-1.navbar-collapse.collapsing {
+                display: flex !important;
+                opacity: 0;
+                transform: translateY(-10px);
+            }
         }
 
         @media (min-width: 1200px) {
-            html body #mainNav #navcol-1 .navbar-nav {
+            html body #mainNav #navcol-1 {
                 position: static !important;
                 transform: none !important;
                 visibility: visible !important;
@@ -701,9 +155,18 @@
                 display: flex !important;
                 justify-content: center !important;
             }
+
+            html body #mainNav #navcol-1 .navbar-nav {
+                flex-direction: row !important;
+                width: auto !important;
+                gap: 0.5rem !important;
+            }
+
+            html body #mainNav #navcol-1 .nav-link {
+                padding: 0.5rem 1rem !important;
+            }
         }
 
-        /* Mobile styles */
         @media (max-width: 1199.98px) {
             html body #mainNav #navcol-1 {
                 display: none !important;
@@ -719,711 +182,64 @@
             html body #mainNav #navcol-1.show {
                 display: flex !important;
                 flex-direction: column !important;
+                align-items: center !important;
             }
 
             html body #mainNav #navcol-1 .navbar-nav {
                 flex-direction: column !important;
                 width: 100% !important;
                 gap: 0 !important;
+                text-align: center !important;
+            }
+
+            html body #mainNav #navcol-1 .nav-link {
+                text-align: center !important;
+                padding: 0.75rem 1rem !important;
             }
 
             html body #mainNav #navcol-1 .btn-primary {
                 margin: 1rem auto 0 !important;
-            }
-        }
-
-        /* CSS resets to prevent interference */
-        #mainNav * {
-            box-sizing: border-box !important;
-        }
-
-        #mainNav .navbar-collapse,
-        #mainNav .navbar-nav {
-            transform: none !important;
-            transition: none !important;
-        }
-
-        #mainNav .nav-link {
-            pointer-events: auto !important;
-            user-select: auto !important;
-        }
-
-        /* Z-index hierarchy */
-        #mainNav {
-            z-index: 1030 !important;
-            position: fixed !important;
-        }
-
-        #mainNav .navbar-collapse {
-            z-index: 1029 !important;
-            position: relative !important;
-        }
-
-        #mainNav .navbar-nav {
-            z-index: 1028 !important;
-            position: relative !important;
-        }
-
-        /* Override Bootstrap collapse behavior */
-        body #mainNav .navbar-collapse.collapse:not(.show) {
-            display: flex !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            height: auto !important;
-            overflow: visible !important;
-        }
-
-        body #mainNav .navbar-collapse.collapsing,
-        body #mainNav .navbar-collapse.collapse.show {
-            display: flex !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-        }
-
-        /* Force desktop layout */
-        @media (min-width: 1200px) {
-            html body #mainNav .navbar-collapse.collapse {
-                display: flex !important;
-                flex-basis: auto !important;
-                justify-content: space-between !important;
-            }
-            
-            html body #mainNav .navbar-collapse.collapse:not(.show) {
-                display: flex !important;
-            }
-            
-            html body #mainNav .navbar-nav {
-                display: flex !important;
-                flex-direction: row !important;
-                align-items: center !important;
-                margin-left: auto !important;
-                margin-right: auto !important;
-                padding-left: 0 !important;
-            }
-            
-            html body #mainNav .navbar-brand {
-                margin-right: 0 !important;
-                padding-right: 0 !important;
-            }
-            
-            html body #mainNav .nav-item {
+                text-align: center !important;
+                width: 100% !important;
                 display: block !important;
             }
-            
-            html body #mainNav .navbar-collapse .navbar-nav .nav-item .nav-link {
-                display: block !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-                color: #212529 !important;
-                font-weight: 500 !important;
-                padding: 0.5rem 1rem !important;
-            }
-        }
-
-        /* Base navbar styles */
-        .navbar {
-            backdrop-filter: blur(10px);
-            background-color: rgba(255, 255, 255, 0.95);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            padding: 1rem 0;
-        }
-
-        .navbar-brand {
-            font-weight: 700;
-            color: var(--bs-primary);
-            font-size: 1.25rem;
-            padding: 0;
-        }
-
-        .navbar-nav {
-            margin: 0;
-        }
-
-        .nav-link {
-            font-weight: 500;
-            color: var(--bs-dark);
-            transition: var(--bs-transition);
-            padding: 0.5rem 1rem;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            color: var(--bs-primary);
-        }
-
-        .navbar-toggler {
-            padding: 0.5rem;
-            border: none;
-            background: transparent;
-        }
-
-        .navbar-toggler:focus {
-            box-shadow: none;
-            outline: none;
-        }
-
-        .navbar-collapse {
-            flex-grow: 0;
-        }
-
-        /* Mobile styles */
-        @media (max-width: 1199.98px) {
-            .navbar-brand {
-                font-size: 1.1rem;
-            }
-            
-            .navbar-collapse {
-                background: rgba(255, 255, 255, 0.98);
-                padding: 1rem;
-                border-radius: 0.5rem;
-                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-                margin-top: 0.5rem;
-                position: absolute;
-                top: 100%;
-            left: 0;
-                right: 0;
-                z-index: 1020;
-            }
-            
-            .navbar-nav {
-                padding-top: 0.5rem;
-                padding-bottom: 0.5rem;
-            }
-            
-            .nav-link {
-                padding: 0.75rem 1rem;
-                text-align: center;
-            }
-            
-            .navbar .btn {
-                margin: 0.5rem auto;
-                width: fit-content;
-            }
-        }
-
-        /* Mobile CTA styles */
-        .mobile-cta {
-            transition: transform 0.3s ease-in-out !important;
-        }
-
-        .mobile-cta.hidden {
-            transform: translateY(100%) !important;
         }
     </style>
 
-    <!-- Article text color fix -->
+    <!-- Blog Post Content Styles -->
     <style>
-        /* Dark text for article content */
-        .article-content,
-        .article-content p,
-        .article-content h1,
-        .article-content h2,
-        .article-content h3,
-        .article-content h4,
-        .article-content h5,
-        .article-content h6,
-        .article-content li {
+        /* Blog post specific styles */
+        .bg-primary.bg-opacity-10 {
+            background-color: #edecfc !important;
+        }
+
+        .bg-primary.bg-opacity-10 p,
+        .bg-primary.bg-opacity-10 ul,
+        .bg-primary.bg-opacity-10 li,
+        .bg-primary.bg-opacity-10 h4 {
             color: #212529 !important;
         }
 
-        /* Primary color for article links */
-        .article-content a:not(.btn) {
+        .bg-primary.bg-opacity-10 .text-start {
+            color: #212529 !important;
+        }
+
+        .bg-primary.bg-opacity-10 .fw-bold {
+            color: #212529 !important;
+        }
+
+        /* Keep primary button text white */
+        .bg-primary.bg-opacity-10 .btn-primary {
+            color: #ffffff !important;
+        }
+
+        /* Ensure proper contrast for links */
+        .bg-primary.bg-opacity-10 a:not(.btn) {
             color: var(--bs-primary) !important;
         }
 
-        /* Preserve white text for buttons */
-        .btn-primary {
-            color: white !important;
-        }
-
-        /* Mobile CTA */
-        .mobile-cta {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: white;
-            padding: 1.25rem 1rem;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-            z-index: 1025;
-            display: none;
-            transition: all 0.3s ease;
-            border-top: 1px solid rgba(0,0,0,0.1);
-        }
-
-        .mobile-cta .container {
-            padding: 0;
-            max-width: 540px;
-        }
-
-        .mobile-cta .btn {
-            font-weight: 600;
-            padding: 1rem 1.5rem;
-            font-size: 1.1rem;
-            border-radius: 0.5rem;
-            background: linear-gradient(135deg, var(--bs-primary), #6366f1);
-            border: none;
-            box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .mobile-cta .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px -1px rgba(79, 70, 229, 0.3);
-        }
-
-        @media (max-width: 991.98px) {
-            .mobile-cta {
-                display: block;
-                transform: translateY(0);
-            }
-            
-            .mobile-cta.hidden {
-                transform: translateY(100%);
-            }
-
-            /* Add padding to prevent content from being hidden behind CTA */
-            body {
-                padding-bottom: calc(1.25rem * 2 + 58px);
-            }
-            
-            .back-to-top {
-                bottom: calc(1.25rem * 2 + 58px);
-            }
-        }
-    </style>
-
-    <style>
-        /* Add these specific styles for expanded navbar state */
-        @media (min-width: 1200px) {
-            .navbar-expand-xl .navbar-collapse {
-                display: flex !important;
-                visibility: visible !important;
-            }
-
-            .navbar-expand-xl .navbar-nav {
-                display: flex !important;
-                flex-direction: row;
-                visibility: visible !important;
-            }
-
-            .navbar-expand-xl .nav-link {
-                color: var(--bs-dark) !important;
-                visibility: visible !important;
-                display: block !important;
-            }
-            
-            .navbar-expand-xl .btn-primary {
-                display: block !important;
-                visibility: visible !important;
-            }
-        }
-    </style>
-
-    <style>
-        /* Article-specific styles */
-        .article-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-out;
-            opacity: 0;
-        }
-
-        .article-content.show {
-            max-height: 5000px;
-            opacity: 1;
-            transition: max-height 0.5s ease-in, opacity 0.5s ease-in;
-        }
-
-        /* Article Tools and Footer */
-        .article-footer {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .article-image-container {
-            cursor: pointer;
-        }
-
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            right: 30px;
-            bottom: 30px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--bs-primary);
-            color: white;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 1000;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .back-to-top:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            color: white;
-        }
-
-        .back-to-top.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top svg {
-            width: 20px;
-            height: 20px;
-            stroke: currentColor;
-        }
-
-        /* Article Footer */
-        .article-footer {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-top: 1.5rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-        }
-    </style>
-
-    <style>
-        /* Blog Header Styles */
-        .blog-header {
-            padding: 8rem 0 4rem;
-            margin-bottom: 2rem;
-            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-            overflow: hidden;
-            position: relative;
-        }
-
-        .blog-header-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('assets/images/blog/i-need-an-image-that-represents-sloth-wisdom-strat.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0.3;
-            transform: scale(1.1);
-            transition: transform 0.3s ease;
-            z-index: 1;
-        }
-
-        .blog-header:hover .blog-header-bg {
-            transform: scale(1.15);
-        }
-
-        .blog-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(44, 62, 80, 0.7) 0%, rgba(52, 152, 219, 0.7) 100%);
-            z-index: 2;
-        }
-
-        .blog-header .container {
-            position: relative;
-            z-index: 3;
-        }
-
-        .blog-header .badge {
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .blog-header h1 {
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .blog-header .lead {
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-        }
-
-        @media (max-width: 768px) {
-            .blog-header {
-                padding: 6rem 0 3rem;
-            }
-        }
-    </style>
-
-    <style>
-        /* Social Proof Notification Mobile Positioning */
-        @media (max-width: 991.98px) {
-            .social-proof-notification {
-                bottom: auto !important;
-                top: 70px !important;
-                left: 0 !important;
-                right: 0 !important;
-                width: 100% !important;
-            }
-
-            .social-proof-notification .notification-content {
-                max-width: 100% !important;
-                width: 100% !important;
-                padding: 5px !important;
-                font-size: 0.875rem !important;
-                border-radius: 0 !important;
-                line-height: 1.2 !important;
-            }
-        }
-
-        /* Desktop Positioning */
-        @media (min-width: 992px) {
-            .social-proof-notification {
-                bottom: 20px;
-                left: 20px;
-                max-width: 320px;
-            }
-
-            .social-proof-notification .notification-content {
-                border-radius: 8px;
-                padding: 5px;
-                font-size: 0.875rem;
-                line-height: 1.2;
-            }
-        }
-
-        .social-proof-notification {
-            position: fixed;
-            z-index: 1020;
-            opacity: 0;
-            transform: translateY(100%);
-            transition: all 0.3s ease;
-        }
-
-        .social-proof-notification.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .social-proof-notification .notification-content {
-            background: white;
-            display: flex;
-            align-items: center;
-        }
-
-        .social-proof-notification .notification-text {
-            margin: 0;
-            color: #1a1a1a;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .notification-location {
-            color: var(--bs-primary);
-            font-weight: 600;
-        }
-    </style>
-
-    <!-- Custom Modal Width Styles -->
-    <style>
-        @media (min-width: 992px) {
-            .modal-dialog {
-                max-width: 900px;
-            }
-        }
-        
-        @media (max-width: 991.98px) {
-            .modal-dialog {
-                max-width: 95%;
-                margin: 1.75rem auto;
-            }
-        }
-    </style>
-
-    <style>
-        /* Navbar Dropdown Fix */
-        #mainNav #navcol-1.navbar-collapse {
-            display: none;
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-
-        #mainNav #navcol-1.navbar-collapse.show {
-            display: block !important;
-            opacity: 1;
-            transform: translateY(0);
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: white;
-            padding: 1rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            border-radius: 0.5rem;
-            margin-top: 0.5rem;
-            z-index: 1030;
-        }
-
-        #mainNav #navcol-1.navbar-collapse.collapsing {
-            display: block !important;
-        }
-
-        #mainNav #navcol-1.navbar-collapse.show .navbar-nav {
-            flex-direction: column;
-            gap: 0;
-            width: 100%;
-        }
-
-        #mainNav #navcol-1.navbar-collapse.show .nav-link {
-            padding: 0.75rem 1rem;
-            text-align: center;
-        }
-
-        #mainNav #navcol-1.navbar-collapse.show .btn-primary {
-            margin: 1rem auto 0;
-            display: block;
-            text-align: center;
-        }
-
-        @media (min-width: 1200px) {
-            #mainNav #navcol-1.navbar-collapse {
-                display: flex !important;
-                opacity: 1;
-                transform: none;
-                position: static;
-                background: none;
-                box-shadow: none;
-                padding: 0;
-                margin: 0;
-            }
-
-            #mainNav #navcol-1.navbar-collapse .navbar-nav {
-                flex-direction: row;
-            justify-content: center;
-                margin: 0 auto;
-                gap: 0.5rem;
-            }
-
-            #mainNav #navcol-1.navbar-collapse .nav-link {
-                padding: 0.5rem 1rem;
-            }
-
-            #mainNav #navcol-1.navbar-collapse .btn-primary {
-                margin-left: 1rem;
-                margin-top: 0;
-            }
-        }
-    </style>
-
-    <!-- Add this after the existing styles -->
-    <style>
-        /* Enhanced Blog Article Layout */
-        .blog-articles {
-            max-width: 100%;
-            margin: 0 auto;
-        }
-
-        .blog-card {
-            margin-bottom: 2rem;
-            overflow: hidden;
-        }
-
-        .card-body {
-            padding: 2rem;
-        }
-
-        .article-content {
-            max-width: 100%;
-        }
-
-        .article-content p,
-        .article-content ul,
-        .article-content ol {
-            max-width: 100%;
-            overflow-wrap: break-word;
-            word-wrap: break-word;
-        }
-
-        /* Responsive Adjustments */
-        @media (max-width: 991.98px) {
-            .blog-articles {
-                padding: 0 1rem;
-            }
-
-            .card-body {
-                padding: 1.5rem;
-            }
-        }
-
-        @media (max-width: 767.98px) {
-            .blog-articles {
-                padding: 0 0.5rem;
-            }
-
-            .card-body {
-                padding: 1.25rem;
-            }
-
-            .article-content {
-                padding: 0;
-            }
-
-            .article-content p,
-            .article-content ul,
-            .article-content ol {
-                padding-right: 0;
-                padding-left: 0;
-            }
-
-            .bg-light,
-            .bg-primary {
-                padding: 1rem !important;
-                margin: 1rem 0 !important;
-            }
-        }
-
-        /* Improved Article Spacing */
-        .article-content h2,
-        .article-content h3,
-        .article-content h4 {
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .article-content p,
-        .article-content ul,
-        .article-content ol {
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .article-content li {
-            margin-bottom: 0.75rem;
-        }
-
-        /* Container Width Control */
-        .container.py-4 {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
-
-        /* Image Responsiveness */
-        .article-image {
-            width: 100%;
-            height: auto;
-            max-height: 300px;
-            object-fit: cover;
+        .bg-primary.bg-opacity-10 a:not(.btn):hover {
+            color: #4338ca !important;
         }
     </style>
 </head>
@@ -1432,7 +248,8 @@
     <nav class="navbar navbar-expand-xl fixed-top navbar-shrink py-3" id="mainNav">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <span>| Strategic Sloth |</span>
+                <img src="assets/img/Slothicon_logo.png" alt="Strategic Sloth Logo" class="me-2" style="height: 30px; width: auto;">
+                <span>Strategic Sloth</span>
             </a>
             <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
                 <span class="visually-hidden">Toggle navigation</span>
@@ -2574,20 +1391,105 @@
     <!-- Mobile menu auto-close script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Get all nav links
+            const navbar = document.getElementById('mainNav');
+            const navbarCollapse = document.getElementById('navcol-1');
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            let isTransitioning = false;
+
+            function closeNavbar() {
+                if (!isTransitioning && navbarCollapse.classList.contains('show')) {
+                    isTransitioning = true;
+                    navbarCollapse.style.opacity = '0';
+                    navbarCollapse.style.transform = 'translateY(-10px)';
+                    
+                    setTimeout(() => {
+                        navbarCollapse.classList.remove('show');
+                        isTransitioning = false;
+                    }, 300);
+                }
+            }
+
+            function openNavbar() {
+                if (!isTransitioning && !navbarCollapse.classList.contains('show')) {
+                    isTransitioning = true;
+                    navbarCollapse.classList.add('show');
+                    
+                    // Trigger reflow
+                    navbarCollapse.offsetHeight;
+                    
+                    navbarCollapse.style.opacity = '1';
+                    navbarCollapse.style.transform = 'translateY(0)';
+                    
+                    setTimeout(() => {
+                        isTransitioning = false;
+                    }, 300);
+                }
+            }
+
+            // Handle hamburger menu click
+            navbarToggler.addEventListener('click', function(event) {
+                event.stopPropagation();
+                if (navbarCollapse.classList.contains('show')) {
+                    closeNavbar();
+                } else {
+                    openNavbar();
+                }
+            });
+
+            // Close navbar when clicking outside
+            document.addEventListener('click', function(event) {
+                const isClickInside = navbar.contains(event.target);
+                if (!isClickInside && navbarCollapse.classList.contains('show')) {
+                    closeNavbar();
+                }
+            });
+
+            // Close navbar on scroll
+            let lastScroll = window.scrollY;
+            window.addEventListener('scroll', function() {
+                const currentScroll = window.scrollY;
+                if (currentScroll > lastScroll && navbarCollapse.classList.contains('show')) {
+                    closeNavbar();
+                }
+                lastScroll = currentScroll;
+            });
+
+            // Handle escape key press
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && navbarCollapse.classList.contains('show')) {
+                    closeNavbar();
+                }
+            });
+
+            // Prevent clicks inside navbar from bubbling to document
+            navbar.addEventListener('click', function(event) {
+                event.stopPropagation();
+            });
+
+            // Close navbar when clicking a nav link
             const navLinks = document.querySelectorAll('#mainNav .nav-link');
-            // Get the navbar collapse element
-            const navbarCollapse = document.querySelector('#navcol-1');
-            
-            // Add click handler to each nav link
             navLinks.forEach(function(link) {
                 link.addEventListener('click', function() {
-                    // Check if the navbar is expanded (has show class)
                     if (navbarCollapse.classList.contains('show')) {
-                        // Remove the show class to collapse it
-                        navbarCollapse.classList.remove('show');
+                        closeNavbar();
                     }
                 });
+            });
+
+            // Handle window resize
+            let resizeTimeout;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    const isDesktop = window.innerWidth >= 1200;
+                    if (isDesktop) {
+                        navbarCollapse.style.opacity = '1';
+                        navbarCollapse.style.transform = 'none';
+                    } else if (!navbarCollapse.classList.contains('show')) {
+                        navbarCollapse.style.opacity = '0';
+                        navbarCollapse.style.transform = 'translateY(-10px)';
+                    }
+                }, 100);
             });
         });
     </script>
@@ -2688,98 +1590,6 @@
                     }
                 }
             });
-            });
-        });
-    </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Get the navbar elements
-            const navbar = document.getElementById('mainNav');
-            const navbarCollapse = document.getElementById('navcol-1');
-            const navbarToggler = document.querySelector('.navbar-toggler');
-            let isTransitioning = false;
-
-            // Function to close the navbar
-            function closeNavbar() {
-                if (!isTransitioning && navbarCollapse.classList.contains('show')) {
-                    isTransitioning = true;
-                    navbarCollapse.style.opacity = '0';
-                    navbarCollapse.style.transform = 'translateY(-10px)';
-                    
-                    setTimeout(() => {
-                        navbarCollapse.classList.remove('show');
-                        isTransitioning = false;
-                    }, 300);
-                }
-            }
-
-            // Function to open the navbar
-            function openNavbar() {
-                if (!isTransitioning && !navbarCollapse.classList.contains('show')) {
-                    isTransitioning = true;
-                    navbarCollapse.classList.add('show');
-                    
-                    // Trigger reflow
-                    navbarCollapse.offsetHeight;
-                    
-                    navbarCollapse.style.opacity = '1';
-                    navbarCollapse.style.transform = 'translateY(0)';
-                    
-                    setTimeout(() => {
-                        isTransitioning = false;
-                    }, 300);
-                }
-            }
-
-            // Handle hamburger menu click
-            navbarToggler.addEventListener('click', function(event) {
-                event.stopPropagation();
-                if (navbarCollapse.classList.contains('show')) {
-                    closeNavbar();
-                } else {
-                    openNavbar();
-                }
-            });
-
-            // Close navbar when clicking outside
-            document.addEventListener('click', function(event) {
-                const isClickInside = navbar.contains(event.target);
-                if (!isClickInside && navbarCollapse.classList.contains('show')) {
-                    closeNavbar();
-                }
-            });
-
-            // Close navbar on scroll
-            let lastScroll = window.scrollY;
-            window.addEventListener('scroll', function() {
-                const currentScroll = window.scrollY;
-                if (currentScroll > lastScroll && navbarCollapse.classList.contains('show')) {
-                    closeNavbar();
-                }
-                lastScroll = currentScroll;
-            });
-
-            // Handle escape key press
-            document.addEventListener('keydown', function(event) {
-                if (event.key === 'Escape' && navbarCollapse.classList.contains('show')) {
-                    closeNavbar();
-                }
-            });
-
-            // Prevent clicks inside navbar from bubbling to document
-            navbar.addEventListener('click', function(event) {
-                event.stopPropagation();
-            });
-
-            // Close navbar when clicking a nav link
-            const navLinks = document.querySelectorAll('#mainNav .nav-link');
-            navLinks.forEach(function(link) {
-                link.addEventListener('click', function() {
-                    if (navbarCollapse.classList.contains('show')) {
-                        closeNavbar();
-                    }
-                });
             });
         });
     </script>

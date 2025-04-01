@@ -68,6 +68,38 @@ For over a decade, I designed magic for giants like Disney, Hasbro, and Universa
     <!-- Index-specific navbar overrides -->
     <style>
         /* Index-specific navbar overrides */
+        html body #mainNav {
+            padding-top: 0.5rem !important;
+            padding-bottom: 0.5rem !important;
+        }
+
+        html body #mainNav .navbar-brand {
+            color: #212529 !important;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        html body #mainNav .navbar-toggler {
+            border: 1px solid rgba(0, 0, 0, 0.1) !important;
+            padding: 0.5rem;
+            background: none !important;
+            transition: all 0.3s ease;
+            border-radius: 50% !important;
+        }
+
+        html body #mainNav .navbar-toggler:focus,
+        html body #mainNav .navbar-toggler:active {
+            outline: none !important;
+            box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.25) !important;
+            border-color: var(--bs-primary) !important;
+        }
+
+        html body #mainNav .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2845, 45, 45, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+            width: 24px !important;
+            height: 24px !important;
+        }
+
         html body #mainNav #navcol-1 {
             display: flex !important;
             justify-content: space-between !important;
@@ -115,18 +147,18 @@ For over a decade, I designed magic for giants like Disney, Hasbro, and Universa
             html body #mainNav #navcol-1.show {
                 display: flex !important;
                 flex-direction: column !important;
-                align-items: center !important;  /* Center the dropdown content */
+                align-items: center !important;
             }
 
             html body #mainNav #navcol-1 .navbar-nav {
                 flex-direction: column !important;
                 width: 100% !important;
                 gap: 0 !important;
-                text-align: center !important;  /* Center the text */
+                text-align: center !important;
             }
 
             html body #mainNav #navcol-1 .nav-link {
-                text-align: center !important;  /* Ensure links are centered */
+                text-align: center !important;
                 padding: 0.75rem 1rem !important;
             }
 
@@ -539,7 +571,8 @@ For over a decade, I designed magic for giants like Disney, Hasbro, and Universa
     <nav class="navbar navbar-expand-xl fixed-top navbar-shrink py-3" id="mainNav">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#top">
-                <span>| Strategic Sloth |</span>
+                <img src="assets/img/Slothicon_logo.png" alt="Strategic Sloth Logo" class="me-2" style="height: 30px; width: auto;">
+                <span>Strategic Sloth</span>
             </a>
             <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
                 <span class="visually-hidden">Toggle navigation</span>
